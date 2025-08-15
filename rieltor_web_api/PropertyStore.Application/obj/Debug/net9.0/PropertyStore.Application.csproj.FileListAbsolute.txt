@@ -1,0 +1,16 @@
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\bin\Debug\net9.0\PropertyStore.Application.deps.json
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\bin\Debug\net9.0\PropertyStore.Application.dll
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\bin\Debug\net9.0\PropertyStore.Application.pdb
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\bin\Debug\net9.0\AgencyStore.Core.dll
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\bin\Debug\net9.0\AgencyStore.Core.pdb
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\obj\Debug\net9.0\PropertyStore.Application.csproj.AssemblyReference.cache
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\obj\Debug\net9.0\PropertyStore.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\obj\Debug\net9.0\PropertyStore.Application.AssemblyInfoInputs.cache
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\obj\Debug\net9.0\PropertyStore.Application.AssemblyInfo.cs
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\obj\Debug\net9.0\PropertyStore.Application.csproj.CoreCompileInputs.cache
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\obj\Debug\net9.0\PropertyStore.Application.sourcelink.json
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\obj\Debug\net9.0\Property.C626D8C4.Up2Date
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\obj\Debug\net9.0\PropertyStore.Application.dll
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\obj\Debug\net9.0\refint\PropertyStore.Application.dll
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\obj\Debug\net9.0\PropertyStore.Application.pdb
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\PropertyStore.Application\obj\Debug\net9.0\ref\PropertyStore.Application.dll

@@ -1,0 +1,12 @@
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\AgencyStore.Core\bin\Debug\net9.0\AgencyStore.Core.deps.json
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\AgencyStore.Core\bin\Debug\net9.0\AgencyStore.Core.dll
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\AgencyStore.Core\bin\Debug\net9.0\AgencyStore.Core.pdb
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\AgencyStore.Core\obj\Debug\net9.0\AgencyStore.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\AgencyStore.Core\obj\Debug\net9.0\AgencyStore.Core.AssemblyInfoInputs.cache
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\AgencyStore.Core\obj\Debug\net9.0\AgencyStore.Core.AssemblyInfo.cs
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\AgencyStore.Core\obj\Debug\net9.0\AgencyStore.Core.csproj.CoreCompileInputs.cache
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\AgencyStore.Core\obj\Debug\net9.0\AgencyStore.Core.sourcelink.json
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\AgencyStore.Core\obj\Debug\net9.0\AgencyStore.Core.dll
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\AgencyStore.Core\obj\Debug\net9.0\refint\AgencyStore.Core.dll
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\AgencyStore.Core\obj\Debug\net9.0\AgencyStore.Core.pdb
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\AgencyStore.Core\obj\Debug\net9.0\ref\AgencyStore.Core.dll
