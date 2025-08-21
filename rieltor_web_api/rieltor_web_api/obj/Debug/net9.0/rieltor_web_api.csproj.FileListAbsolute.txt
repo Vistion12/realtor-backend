@@ -25,7 +25,6 @@ C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\r
 C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\rieltor_web_api\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\rieltor_web_api\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\rieltor_web_api\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\rieltor_web_api\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\rieltor_web_api\obj\Debug\net9.0\rieltor_.8C90167A.Up2Date
 C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\rieltor_web_api\obj\Debug\net9.0\rieltor_web_api.dll
 C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\rieltor_web_api\obj\Debug\net9.0\refint\rieltor_web_api.dll
@@ -138,3 +137,4 @@ C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\r
 C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\rieltor_web_api\bin\Debug\net9.0\AgencyStore.Core.pdb
 C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\rieltor_web_api\bin\Debug\net9.0\PropertyStore.Application.dll
 C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\rieltor_web_api\bin\Debug\net9.0\PropertyStore.Application.pdb
+C:\Users\Vistion\Desktop\academy\homeWork\rieltor_project\back\rieltor_web_api\rieltor_web_api\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

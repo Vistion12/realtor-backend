@@ -2,6 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using PropertyStore.Application.Services;
 using PropertyStore.DataAccess;
 using PropertyStore.DataAccess.Repository;
+using System.Text;
+Console.OutputEncoding = Encoding.UTF8;
+Console.InputEncoding = Encoding.UTF8;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

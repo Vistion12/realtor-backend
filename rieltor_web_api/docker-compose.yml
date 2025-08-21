@@ -1,11 +1,11 @@
 services:
   postgres:
-    container_name: postgres
+    container_name: Dbpostgres
     image: postgres:latest
     environment:
       POSTGRES_DB: "propertystoredb"  
-      POSTGRES_USER: "postgres"                 
-      POSTGRES_PASSWORD: "123"
+      POSTGRES_USER: postgres                 
+      POSTGRES_PASSWORD: 123
     volumes:
       - postgres-data:/var/lib/postgresql/data
     ports:
