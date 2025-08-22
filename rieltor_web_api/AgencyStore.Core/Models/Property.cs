@@ -30,20 +30,31 @@
 
         public int Rooms { get; }
         public string Description { get; } = string.Empty;
-        public string MainPhotoUrl { get; } = string.Empty;
+
+        private readonly List<PropertyImage> _images = new();
+        public IReadOnlyList<PropertyImage> Images => _images.AsReadOnly();
 
         public bool IsActive { get; } = true;
         public DateTime CreatedAt { get; } = DateTime.UtcNow;
 
-        public static (Property property, string Error) Create(Guid id, string title, string type, decimal price, string address,
-                        decimal area, int rooms, string description, bool isActive, DateTime createdAt)
+        public void AddImage(PropertyImage image)
+        {
+            if (image.PropertyId != Id)
+                throw new ArgumentException("Image does not belong to this property");
+
+            _images.Add(image);
+        }
+
+        public static (Property property, string Error) Create(Guid id, string title, string type,
+        decimal price, string address, decimal area, int rooms, string description,
+        bool isActive, DateTime createdAt)
         {
             var error = string.Empty;
 
             // Валидация title
             if (string.IsNullOrEmpty(title))
             {
-                error="Title cannot be empty";
+                error = "Title cannot be empty";
             }
             else if (title.Length > MAX_TITLE_LENGTH)
             {
@@ -87,11 +98,9 @@
                 error = "Description cannot be longer than 2000 symbols";
             }
 
-            
-
             var property = new Property(
-                id, title, type, price, address,
-                area, rooms, description, isActive, createdAt);
+                                id, title, type, price, address, area, rooms,
+                                description, isActive, createdAt);
 
             return (property, error);
         }

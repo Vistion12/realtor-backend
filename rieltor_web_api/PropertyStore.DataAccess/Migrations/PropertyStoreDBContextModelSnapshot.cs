@@ -45,10 +45,6 @@ namespace PropertyStore.DataAccess.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("MainPhotoUrl")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
@@ -57,7 +53,8 @@ namespace PropertyStore.DataAccess.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -65,7 +62,58 @@ namespace PropertyStore.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("IsActive");
+
+                    b.HasIndex("Price");
+
+                    b.HasIndex("Type");
+
                     b.ToTable("Properties");
+                });
+
+            modelBuilder.Entity("PropertyStore.DataAccess.Entities.PropertyImageEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("IsMain")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("PropertyId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PropertyId");
+
+                    b.ToTable("PropertyImages");
+                });
+
+            modelBuilder.Entity("PropertyStore.DataAccess.Entities.PropertyImageEntity", b =>
+                {
+                    b.HasOne("PropertyStore.DataAccess.Entities.PropertyEntity", "Property")
+                        .WithMany("Images")
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Property");
+                });
+
+            modelBuilder.Entity("PropertyStore.DataAccess.Entities.PropertyEntity", b =>
+                {
+                    b.Navigation("Images");
                 });
 #pragma warning restore 612, 618
         }

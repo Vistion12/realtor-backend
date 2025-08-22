@@ -1,10 +1,5 @@
 ﻿using AgencyStore.Core.Models;
 using PropertyStore.DataAccess.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PropertyStore.Application.Services
 {
@@ -27,16 +22,42 @@ namespace PropertyStore.Application.Services
             return await _propertiesRepository.Create(property);
         }
 
-        public async Task<Guid> UpdateProperty(Guid id, string title, string type, decimal price, string addres,
-            int rooms, string description, bool isActive, DateTime createdAt)
+        public async Task<Guid> UpdateProperty(Guid id, string title, string type, decimal price, string address,
+    decimal area, int rooms, string description, bool isActive, DateTime createdAt)
         {
-            return await _propertiesRepository.Update(id, title, type, price, addres, rooms, description, isActive, createdAt);
+            return await _propertiesRepository.Update(id, title, type, price, address,
+                area, rooms, description, isActive, createdAt);
         }
 
         public async Task<Guid> DeleteProperty(Guid id)
         {
             return await _propertiesRepository.Delete(id);
+        }
 
+        public async Task<Property?> GetPropertyById(Guid id)
+        {
+            return await _propertiesRepository.GetById(id);
+        }
+
+        public async Task AddImageToProperty(Guid propertyId, string imageUrl, bool isMain = false, int order = 0)
+        {
+            var imageId = Guid.NewGuid();
+            var (image, error) = PropertyImage.Create(imageId, propertyId, imageUrl, isMain, order);
+
+            if (!string.IsNullOrEmpty(error))
+                throw new ArgumentException(error);
+
+            await _propertiesRepository.AddImageToProperty(propertyId, image);
+        }
+
+        public async Task RemoveImageFromProperty(Guid propertyId, Guid imageId)
+        {
+            await _propertiesRepository.RemoveImageFromProperty(propertyId, imageId);
+        }
+
+        public async Task SetMainImage(Guid propertyId, Guid imageId)
+        {
+            await _propertiesRepository.SetMainImage(propertyId, imageId);
         }
     }
 }

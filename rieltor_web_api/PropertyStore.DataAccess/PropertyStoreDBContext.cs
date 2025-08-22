@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PropertyStore.DataAccess.Configuration;
 using PropertyStore.DataAccess.Entities;
 
 namespace PropertyStore.DataAccess
@@ -9,5 +10,12 @@ namespace PropertyStore.DataAccess
         {
         }
         public DbSet<PropertyEntity> Properties { get; set; }
+        public DbSet<PropertyImageEntity> PropertyImages { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new PropertyConfiguration());
+            modelBuilder.ApplyConfiguration(new PropertyImageConfiguration());
+        }
     }
 }

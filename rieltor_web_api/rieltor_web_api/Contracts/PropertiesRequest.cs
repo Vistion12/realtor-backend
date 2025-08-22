@@ -8,8 +8,7 @@
         decimal Area,
             int Rooms,
             string Description,
-            bool IsActive,
-            DateTime CreatedAt
+            bool IsActive
         );
 
 }

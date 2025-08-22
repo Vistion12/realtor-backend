@@ -33,8 +33,10 @@ namespace PropertyStore.DataAccess.Configuration
             builder.Property(b => b.Description)
                 .IsRequired();
 
-            builder.Property(b => b.MainPhotoUrl)
-                .IsRequired();
+            //builder.Property(b => b.MainPhotoUrl).IsRequired();
+            builder.HasMany(p => p.Images)
+            .WithOne(i => i.Property)
+            .HasForeignKey(i => i.PropertyId);
 
             builder.Property(b => b.IsActive)
                 .IsRequired();
