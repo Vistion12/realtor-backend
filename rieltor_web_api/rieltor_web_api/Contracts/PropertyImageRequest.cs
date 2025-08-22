@@ -2,7 +2,6 @@
 {
     public record PropertyImageRequest(
         string Url,
-        bool IsMain = false,
-        int Order = 0
+        bool IsMain = false
     );
 }

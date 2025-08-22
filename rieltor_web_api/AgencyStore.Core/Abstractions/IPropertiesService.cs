@@ -11,7 +11,7 @@ namespace PropertyStore.Application.Services
     decimal area, int rooms, string description, bool isActive, DateTime createdAt);
 
         Task<Property?> GetPropertyById(Guid id);
-        Task AddImageToProperty(Guid propertyId, string imageUrl, bool isMain = false, int order = 0);
+        Task AddImageToProperty(Guid propertyId, string imageUrl, bool isMain = false);
         Task RemoveImageFromProperty(Guid propertyId, Guid imageId);
         Task SetMainImage(Guid propertyId, Guid imageId);
     }

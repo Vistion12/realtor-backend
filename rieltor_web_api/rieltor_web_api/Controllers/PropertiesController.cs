@@ -78,7 +78,7 @@ namespace rieltor_web_api.Controllers
         {
             try
             {
-                await _propertiesService.AddImageToProperty(propertyId, request.Url, request.IsMain, request.Order);
+                await _propertiesService.AddImageToProperty(propertyId, request.Url, request.IsMain);
                 return Ok();
             }
             catch (ArgumentException ex)

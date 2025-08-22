@@ -54,7 +54,7 @@ namespace PropertyStore.DataAccess.Repository
                    .SetProperty(p => p.Type, p => type)
                    .SetProperty(p => p.Price, p => price)
                    .SetProperty(p => p.Address, p => address)
-                   .SetProperty(p => p.Area, p => area)          // ← ДОБАВЬТЕ ЭТУ СТРОКУ!
+                   .SetProperty(p => p.Area, p => area)          
                    .SetProperty(p => p.Rooms, p => rooms)
                    .SetProperty(p => p.Description, p => description)
                    .SetProperty(p => p.IsActive, p => isActive)
@@ -83,18 +83,28 @@ namespace PropertyStore.DataAccess.Repository
         }
 
         public async Task AddImageToProperty(Guid propertyId, PropertyImage image)
-        {
-            // Создаем imageEntity без предварительной загрузки PropertyEntity
+        {            
+            if (image.IsMain)
+            {
+                await dbContext.PropertyImages
+                    .Where(i => i.PropertyId == propertyId)
+                    .ExecuteUpdateAsync(s => s
+                        .SetProperty(i => i.IsMain, i => false));
+            }
+
+            var maxOrder = await dbContext.PropertyImages
+                .Where(i => i.PropertyId == propertyId)
+                .MaxAsync(i => (int?)i.Order) ?? -1;
+
             var imageEntity = new PropertyImageEntity
             {
                 Id = image.Id,
-                PropertyId = propertyId, // Просто устанавливаем foreign key
+                PropertyId = propertyId,
                 Url = image.Url,
                 IsMain = image.IsMain,
-                Order = image.Order
+                Order = maxOrder + 1  
             };
 
-            // Добавляем напрямую в DbSet
             await dbContext.PropertyImages.AddAsync(imageEntity);
             await dbContext.SaveChangesAsync();
         }
@@ -153,8 +163,7 @@ namespace PropertyStore.DataAccess.Repository
                     imageEntity.Id,
                     imageEntity.PropertyId,
                     imageEntity.Url,
-                    imageEntity.IsMain,
-                    imageEntity.Order
+                    imageEntity.IsMain
                 );
 
                 if (string.IsNullOrEmpty(imageError))

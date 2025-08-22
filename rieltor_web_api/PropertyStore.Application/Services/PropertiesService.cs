@@ -39,10 +39,11 @@ namespace PropertyStore.Application.Services
             return await _propertiesRepository.GetById(id);
         }
 
-        public async Task AddImageToProperty(Guid propertyId, string imageUrl, bool isMain = false, int order = 0)
+        public async Task AddImageToProperty(Guid propertyId, string imageUrl, bool isMain = false)
         {
             var imageId = Guid.NewGuid();
-            var (image, error) = PropertyImage.Create(imageId, propertyId, imageUrl, isMain, order);
+
+            var (image, error) = PropertyImage.Create(imageId, propertyId, imageUrl, isMain);
 
             if (!string.IsNullOrEmpty(error))
                 throw new ArgumentException(error);

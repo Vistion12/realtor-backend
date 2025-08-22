@@ -3,36 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\propertystore.dataaccess\\repository\\propertiesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|solutionrelative:propertystore.dataaccess\\repository\\propertiesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4884BCED-AB15-4ABD-9B39-AABCA353EF7E}|PropertyStore.Application\\PropertyStore.Application.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\propertystore.application\\services\\propertiesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4884BCED-AB15-4ABD-9B39-AABCA353EF7E}|PropertyStore.Application\\PropertyStore.Application.csproj|solutionrelative:propertystore.application\\services\\propertiesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\controllers\\propertiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|solutionrelative:rieltor_web_api\\controllers\\propertiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A06DA853-9794-4CD8-98BD-140695807942}|AgencyStore.Core\\AgencyStore.Core.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\agencystore.core\\abstractions\\ipropertiesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A06DA853-9794-4CD8-98BD-140695807942}|AgencyStore.Core\\AgencyStore.Core.csproj|solutionrelative:agencystore.core\\abstractions\\ipropertiesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\contracts\\propertyimageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|solutionrelative:rieltor_web_api\\contracts\\propertyimageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\contracts\\propertyimagerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|solutionrelative:rieltor_web_api\\contracts\\propertyimagerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\propertystore.dataaccess\\configuration\\propertyimageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|solutionrelative:propertystore.dataaccess\\configuration\\propertyimageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\propertystore.dataaccess\\configuration\\propertyconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|solutionrelative:propertystore.dataaccess\\configuration\\propertyconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A06DA853-9794-4CD8-98BD-140695807942}|AgencyStore.Core\\AgencyStore.Core.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\agencystore.core\\abstractions\\ipropertiesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A06DA853-9794-4CD8-98BD-140695807942}|AgencyStore.Core\\AgencyStore.Core.csproj|solutionrelative:agencystore.core\\abstractions\\ipropertiesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Migrations\\20250822091203_AddPropertyImages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PropertyStore.DataAccess\\Migrations\\20250822091203_AddPropertyImages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|solutionrelative:rieltor_web_api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\propertystore.dataaccess\\repository\\propertiesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|solutionrelative:propertystore.dataaccess\\repository\\propertiesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A06DA853-9794-4CD8-98BD-140695807942}|AgencyStore.Core\\AgencyStore.Core.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\agencystore.core\\models\\propertyimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A06DA853-9794-4CD8-98BD-140695807942}|AgencyStore.Core\\AgencyStore.Core.csproj|solutionrelative:agencystore.core\\models\\propertyimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4884BCED-AB15-4ABD-9B39-AABCA353EF7E}|PropertyStore.Application\\PropertyStore.Application.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\propertystore.application\\services\\propertiesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4884BCED-AB15-4ABD-9B39-AABCA353EF7E}|PropertyStore.Application\\PropertyStore.Application.csproj|solutionrelative:propertystore.application\\services\\propertiesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\contracts\\propertiesrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|solutionrelative:rieltor_web_api\\contracts\\propertiesrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\contracts\\propertiesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|solutionrelative:rieltor_web_api\\contracts\\propertiesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A06DA853-9794-4CD8-98BD-140695807942}|AgencyStore.Core\\AgencyStore.Core.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\agencystore.core\\abstractions\\ipropertiesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A06DA853-9794-4CD8-98BD-140695807942}|AgencyStore.Core\\AgencyStore.Core.csproj|solutionrelative:agencystore.core\\abstractions\\ipropertiesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\controllers\\fileuploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,32 +59,8 @@
       "RelativeMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|solutionrelative:rieltor_web_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\contracts\\propertyimagerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|solutionrelative:rieltor_web_api\\contracts\\propertyimagerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\contracts\\propertiesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|solutionrelative:rieltor_web_api\\contracts\\propertiesresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\contracts\\propertyimageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|solutionrelative:rieltor_web_api\\contracts\\propertyimageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\contracts\\propertiesrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|solutionrelative:rieltor_web_api\\contracts\\propertiesrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\propertystore.dataaccess\\propertystoredbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|solutionrelative:propertystore.dataaccess\\propertystoredbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\propertystore.dataaccess\\configuration\\propertyconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|solutionrelative:propertystore.dataaccess\\configuration\\propertyconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\propertystore.dataaccess\\configuration\\propertyimageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|solutionrelative:propertystore.dataaccess\\configuration\\propertyimageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\propertystore.dataaccess\\entities\\propertyentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -83,12 +75,8 @@
       "RelativeMoniker": "D:0:0:{A06DA853-9794-4CD8-98BD-140695807942}|AgencyStore.Core\\AgencyStore.Core.csproj|solutionrelative:agencystore.core\\models\\property.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|solutionrelative:rieltor_web_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{8E0FEF12-6554-4A5D-B959-761994EB23CE}|rieltor_web_api\\rieltor_web_api.csproj|solutionrelative:rieltor_web_api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|c:\\users\\vistion\\desktop\\academy\\homework\\rieltor_project\\back\\rieltor_web_api\\propertystore.dataaccess\\migrations\\20250822091203_addpropertyimages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8341572D-7904-4268-8680-B821101BF215}|PropertyStore.DataAccess\\PropertyStore.DataAccess.csproj|solutionrelative:propertystore.dataaccess\\migrations\\20250822091203_addpropertyimages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -98,7 +86,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 17,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -114,46 +102,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "20250822091203_AddPropertyImages.cs",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Migrations\\20250822091203_AddPropertyImages.cs",
-              "RelativeDocumentMoniker": "PropertyStore.DataAccess\\Migrations\\20250822091203_AddPropertyImages.cs",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Migrations\\20250822091203_AddPropertyImages.cs",
-              "RelativeToolTip": "PropertyStore.DataAccess\\Migrations\\20250822091203_AddPropertyImages.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAkwDQAAAApAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "PropertyConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Configuration\\PropertyConfiguration.cs",
+              "RelativeDocumentMoniker": "PropertyStore.DataAccess\\Configuration\\PropertyConfiguration.cs",
+              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Configuration\\PropertyConfiguration.cs",
+              "RelativeToolTip": "PropertyStore.DataAccess\\Configuration\\PropertyConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-22T09:12:04.047Z",
+              "WhenOpened": "2025-08-15T10:23:18.54Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "FileUploadController.cs",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Controllers\\FileUploadController.cs",
-              "RelativeDocumentMoniker": "rieltor_web_api\\Controllers\\FileUploadController.cs",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Controllers\\FileUploadController.cs",
-              "RelativeToolTip": "rieltor_web_api\\Controllers\\FileUploadController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "PropertyImageConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Configuration\\PropertyImageConfiguration.cs",
+              "RelativeDocumentMoniker": "PropertyStore.DataAccess\\Configuration\\PropertyImageConfiguration.cs",
+              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Configuration\\PropertyImageConfiguration.cs",
+              "RelativeToolTip": "PropertyStore.DataAccess\\Configuration\\PropertyImageConfiguration.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBsAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-22T08:51:24.344Z",
+              "WhenOpened": "2025-08-22T07:59:57.564Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
+              "Title": "PropertiesController.cs",
+              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Controllers\\PropertiesController.cs",
+              "RelativeDocumentMoniker": "rieltor_web_api\\Controllers\\PropertiesController.cs",
+              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Controllers\\PropertiesController.cs",
+              "RelativeToolTip": "rieltor_web_api\\Controllers\\PropertiesController.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAAAFEAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T14:39:52.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "PropertyImageRequest.cs",
               "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Contracts\\PropertyImageRequest.cs",
               "RelativeDocumentMoniker": "rieltor_web_api\\Contracts\\PropertyImageRequest.cs",
               "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Contracts\\PropertyImageRequest.cs",
               "RelativeToolTip": "rieltor_web_api\\Contracts\\PropertyImageRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-22T08:43:07.619Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 1,
               "Title": "PropertyImageResponse.cs",
               "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Contracts\\PropertyImageResponse.cs",
               "RelativeDocumentMoniker": "rieltor_web_api\\Contracts\\PropertyImageResponse.cs",
@@ -166,111 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "PropertyImageConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Configuration\\PropertyImageConfiguration.cs",
-              "RelativeDocumentMoniker": "PropertyStore.DataAccess\\Configuration\\PropertyImageConfiguration.cs",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Configuration\\PropertyImageConfiguration.cs",
-              "RelativeToolTip": "PropertyStore.DataAccess\\Configuration\\PropertyImageConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-22T07:59:57.564Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "PropertyImageEntity.cs",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Entities\\PropertyImageEntity.cs",
-              "RelativeDocumentMoniker": "PropertyStore.DataAccess\\Entities\\PropertyImageEntity.cs",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Entities\\PropertyImageEntity.cs",
-              "RelativeToolTip": "PropertyStore.DataAccess\\Entities\\PropertyImageEntity.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAQwA0AAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-22T07:58:21.885Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PropertyImage.cs",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\AgencyStore.Core\\Models\\PropertyImage.cs",
-              "RelativeDocumentMoniker": "AgencyStore.Core\\Models\\PropertyImage.cs",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\AgencyStore.Core\\Models\\PropertyImage.cs",
-              "RelativeToolTip": "AgencyStore.Core\\Models\\PropertyImage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-22T07:53:11.373Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "PropertiesRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Contracts\\PropertiesRequest.cs",
-              "RelativeDocumentMoniker": "rieltor_web_api\\Contracts\\PropertiesRequest.cs",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Contracts\\PropertiesRequest.cs",
-              "RelativeToolTip": "rieltor_web_api\\Contracts\\PropertiesRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-21T10:39:37.605Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "PropertiesResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Contracts\\PropertiesResponse.cs",
-              "RelativeDocumentMoniker": "rieltor_web_api\\Contracts\\PropertiesResponse.cs",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Contracts\\PropertiesResponse.cs",
-              "RelativeToolTip": "rieltor_web_api\\Contracts\\PropertiesResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-15T14:44:56.589Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PropertiesController.cs",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Controllers\\PropertiesController.cs",
-              "RelativeDocumentMoniker": "rieltor_web_api\\Controllers\\PropertiesController.cs",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Controllers\\PropertiesController.cs",
-              "RelativeToolTip": "rieltor_web_api\\Controllers\\PropertiesController.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAswEwAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-15T14:39:52.453Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IPropertiesService.cs",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\AgencyStore.Core\\Abstractions\\IPropertiesService.cs",
-              "RelativeDocumentMoniker": "AgencyStore.Core\\Abstractions\\IPropertiesService.cs",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\AgencyStore.Core\\Abstractions\\IPropertiesService.cs",
-              "RelativeToolTip": "AgencyStore.Core\\Abstractions\\IPropertiesService.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAQwAoAAABUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-15T14:33:50.198Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PropertiesService.cs",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.Application\\Services\\PropertiesService.cs",
-              "RelativeDocumentMoniker": "PropertyStore.Application\\Services\\PropertiesService.cs",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.Application\\Services\\PropertiesService.cs",
-              "RelativeToolTip": "PropertyStore.Application\\Services\\PropertiesService.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAowCsAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-15T13:46:20.059Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "IPropertiesRepository.cs",
               "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\AgencyStore.Core\\Abstractions\\IPropertiesRepository.cs",
               "RelativeDocumentMoniker": "AgencyStore.Core\\Abstractions\\IPropertiesRepository.cs",
@@ -284,69 +181,120 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "rieltor_web_api\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\appsettings.Development.json",
-              "RelativeToolTip": "rieltor_web_api\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-15T13:12:18.17Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "PropertiesRepository.cs",
               "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Repository\\PropertiesRepository.cs",
               "RelativeDocumentMoniker": "PropertyStore.DataAccess\\Repository\\PropertiesRepository.cs",
               "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Repository\\PropertiesRepository.cs",
               "RelativeToolTip": "PropertyStore.DataAccess\\Repository\\PropertiesRepository.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAcwDsAAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAHMAAAAAAAAAAADwv5UAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-15T10:39:59.936Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "rieltor_web_api\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Properties\\launchSettings.json",
-              "RelativeToolTip": "rieltor_web_api\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-18T16:20:45.358Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\appsettings.json",
-              "RelativeDocumentMoniker": "rieltor_web_api\\appsettings.json",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\appsettings.json",
-              "RelativeToolTip": "rieltor_web_api\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-15T13:12:10.225Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "PropertyConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Configuration\\PropertyConfiguration.cs",
-              "RelativeDocumentMoniker": "PropertyStore.DataAccess\\Configuration\\PropertyConfiguration.cs",
-              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Configuration\\PropertyConfiguration.cs",
-              "RelativeToolTip": "PropertyStore.DataAccess\\Configuration\\PropertyConfiguration.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAQwCYAAAAuAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "PropertyImage.cs",
+              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\AgencyStore.Core\\Models\\PropertyImage.cs",
+              "RelativeDocumentMoniker": "AgencyStore.Core\\Models\\PropertyImage.cs",
+              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\AgencyStore.Core\\Models\\PropertyImage.cs",
+              "RelativeToolTip": "AgencyStore.Core\\Models\\PropertyImage.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwBgAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-15T10:23:18.54Z",
+              "WhenOpened": "2025-08-22T07:53:11.373Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 12,
+              "Title": "FileUploadController.cs",
+              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Controllers\\FileUploadController.cs",
+              "RelativeDocumentMoniker": "rieltor_web_api\\Controllers\\FileUploadController.cs",
+              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Controllers\\FileUploadController.cs",
+              "RelativeToolTip": "rieltor_web_api\\Controllers\\FileUploadController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T08:51:24.344Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "20250822091203_AddPropertyImages.cs",
+              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Migrations\\20250822091203_AddPropertyImages.cs",
+              "RelativeDocumentMoniker": "PropertyStore.DataAccess\\Migrations\\20250822091203_AddPropertyImages.cs",
+              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Migrations\\20250822091203_AddPropertyImages.cs",
+              "RelativeToolTip": "PropertyStore.DataAccess\\Migrations\\20250822091203_AddPropertyImages.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAkwDQAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T09:12:04.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "PropertyImageEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Entities\\PropertyImageEntity.cs",
+              "RelativeDocumentMoniker": "PropertyStore.DataAccess\\Entities\\PropertyImageEntity.cs",
+              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Entities\\PropertyImageEntity.cs",
+              "RelativeToolTip": "PropertyStore.DataAccess\\Entities\\PropertyImageEntity.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwA0AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-22T07:58:21.885Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PropertiesRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Contracts\\PropertiesRequest.cs",
+              "RelativeDocumentMoniker": "rieltor_web_api\\Contracts\\PropertiesRequest.cs",
+              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Contracts\\PropertiesRequest.cs",
+              "RelativeToolTip": "rieltor_web_api\\Contracts\\PropertiesRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-21T10:39:37.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PropertiesResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Contracts\\PropertiesResponse.cs",
+              "RelativeDocumentMoniker": "rieltor_web_api\\Contracts\\PropertiesResponse.cs",
+              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Contracts\\PropertiesResponse.cs",
+              "RelativeToolTip": "rieltor_web_api\\Contracts\\PropertiesResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T14:44:56.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IPropertiesService.cs",
+              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\AgencyStore.Core\\Abstractions\\IPropertiesService.cs",
+              "RelativeDocumentMoniker": "AgencyStore.Core\\Abstractions\\IPropertiesService.cs",
+              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\AgencyStore.Core\\Abstractions\\IPropertiesService.cs",
+              "RelativeToolTip": "AgencyStore.Core\\Abstractions\\IPropertiesService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T14:33:50.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PropertiesService.cs",
+              "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.Application\\Services\\PropertiesService.cs",
+              "RelativeDocumentMoniker": "PropertyStore.Application\\Services\\PropertiesService.cs",
+              "ToolTip": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.Application\\Services\\PropertiesService.cs",
+              "RelativeToolTip": "PropertyStore.Application\\Services\\PropertiesService.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAA5wDMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-15T13:46:20.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "PropertyEntity.cs",
               "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\PropertyStore.DataAccess\\Entities\\PropertyEntity.cs",
               "RelativeDocumentMoniker": "PropertyStore.DataAccess\\Entities\\PropertyEntity.cs",
@@ -354,8 +302,7 @@
               "RelativeToolTip": "PropertyStore.DataAccess\\Entities\\PropertyEntity.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAcwA4AAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-15T10:09:13.5Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-15T10:09:13.5Z"
             },
             {
               "$type": "Document",
@@ -367,12 +314,11 @@
               "RelativeToolTip": "PropertyStore.DataAccess\\PropertyStoreDBContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-15T10:05:31.235Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-15T10:05:31.235Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 17,
               "Title": "Property.cs",
               "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\AgencyStore.Core\\Models\\Property.cs",
               "RelativeDocumentMoniker": "AgencyStore.Core\\Models\\Property.cs",
@@ -380,12 +326,11 @@
               "RelativeToolTip": "AgencyStore.Core\\Models\\Property.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAowGIAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-15T09:36:36.511Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-15T09:36:36.511Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\rieltor_web_api\\Program.cs",
               "RelativeDocumentMoniker": "rieltor_web_api\\Program.cs",
@@ -393,8 +338,7 @@
               "RelativeToolTip": "rieltor_web_api\\Program.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T15:12:12.478Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-14T15:12:12.478Z"
             }
           ]
         }

@@ -1,6 +1,4 @@
-﻿
-
-namespace AgencyStore.Core.Models
+﻿namespace AgencyStore.Core.Models
 {
     public class PropertyImage
     {
@@ -22,7 +20,7 @@ namespace AgencyStore.Core.Models
         public int Order { get; }
 
         public static (PropertyImage image, string error) Create(Guid id, Guid propertyId, string url,
-            bool isMain = false, int order = 0)
+            bool isMain = false)
         {
             var error = string.Empty;
 
@@ -35,7 +33,7 @@ namespace AgencyStore.Core.Models
                 error = $"URL cannot be longer than {MAX_URL_LENGTH} symbols";
             }
 
-            var image = new PropertyImage(id, propertyId, url, isMain, order);
+            var image = new PropertyImage(id, propertyId, url, isMain, 0);
             return (image, error);
         }
     }
