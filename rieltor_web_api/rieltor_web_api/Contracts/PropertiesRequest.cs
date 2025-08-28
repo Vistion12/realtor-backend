@@ -6,9 +6,10 @@
         decimal Price,
         string Address,
         decimal Area,
-            int Rooms,
-            string Description,
-            bool IsActive
-        );
+        int Rooms,
+        string Description,
+        bool IsActive,
+        List<PropertyImageRequest> Images
+    );
 
 }

@@ -9,6 +9,7 @@ namespace PropertyStore.DataAccess.Repository
         Task<List<Property>> Get();
         Task<Guid> Update(Guid id, string title, string type, decimal price, string address,
     decimal area, int rooms, string description, bool isActive, DateTime createdAt);
+        Task RemoveAllImagesFromProperty(Guid propertyId);
 
         Task<Property?> GetById(Guid id); // Для получения конкретного property
         Task AddImageToProperty(Guid propertyId, PropertyImage image);

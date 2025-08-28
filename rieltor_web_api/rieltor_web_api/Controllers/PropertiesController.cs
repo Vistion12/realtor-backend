@@ -6,7 +6,7 @@ using rieltor_web_api.Contracts;
 namespace rieltor_web_api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PropertiesController : ControllerBase
     {
         private readonly IPropertiesService _propertiesService;
@@ -47,14 +47,42 @@ namespace rieltor_web_api.Controllers
                 request.Rooms,
                 request.Description,
                 request.IsActive,
-                DateTime.UtcNow 
+                DateTime.UtcNow
             );
 
             if (!string.IsNullOrEmpty(error))
                 return BadRequest(error);
 
-            var propertyId = await _propertiesService.CreateProperty(property);
-            return Ok(propertyId);
+            // Обрабатываем изображения
+            if (request.Images != null && request.Images.Any())
+            {
+                foreach (var imageRequest in request.Images)
+                {
+                    var (image, imageError) = PropertyImage.Create(
+                        Guid.NewGuid(),
+                        property.Id,
+                        imageRequest.Url,
+                        imageRequest.IsMain
+                    );
+
+                    if (!string.IsNullOrEmpty(imageError))
+                    {
+                        return BadRequest($"Ошибка изображения: {imageError}");
+                    }
+
+                    property.AddImage(image);
+                }
+            }
+
+            try
+            {
+                var propertyId = await _propertiesService.CreateProperty(property);
+                return Ok(propertyId);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Ошибка при создании объекта: {ex.Message}");
+            }
         }
 
         [HttpPut("{id:guid}")]
@@ -64,6 +92,19 @@ namespace rieltor_web_api.Controllers
                 id, request.Title, request.Type, request.Price,
                 request.Address, request.Area, request.Rooms, request.Description,  // ← Добавьте request.Area
                 request.IsActive, DateTime.UtcNow);
+
+            // ДОБАВЬТЕ: обработку изображений
+            if (request.Images != null)
+            {
+                // Удаляем старые изображения
+                await _propertiesService.RemoveAllImagesFromProperty(id);
+
+                // Добавляем новые
+                foreach (var imageRequest in request.Images)
+                {
+                    await _propertiesService.AddImageToProperty(id, imageRequest.Url, imageRequest.IsMain);
+                }
+            }
             return Ok(propertyId);
         }
 

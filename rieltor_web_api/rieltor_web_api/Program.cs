@@ -37,9 +37,14 @@ if (!Directory.Exists(uploadsPath))
 
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(uploadsPath),
-    RequestPath = "/uploads"
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "uploads")),
+    RequestPath = "/uploads",
+    ServeUnknownFileTypes = true // Для поддержки различных форматов изображений
 });
+
+app.UseExceptionHandler("/error");
+app.UseStatusCodePagesWithReExecute("/error/{0}");
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
@@ -48,9 +53,9 @@ app.MapControllers();
 
 app.UseCors(x =>
 {
-    x.WithHeaders().AllowAnyHeader();
-    x.WithOrigins("http://localhost:3000");
-    x.WithMethods().AllowAnyMethod();
+    x.AllowAnyHeader();
+    x.AllowAnyMethod(); 
+    x.AllowAnyOrigin(); 
 });
 
 app.Run();

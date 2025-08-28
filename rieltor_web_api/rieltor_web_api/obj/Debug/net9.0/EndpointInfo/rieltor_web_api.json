@@ -54,7 +54,7 @@
         }
       }
     },
-    "/Properties": {
+    "/api/Properties": {
       "get": {
         "tags": [
           "Properties"
@@ -141,7 +141,7 @@
         }
       }
     },
-    "/Properties/{id}": {
+    "/api/Properties/{id}": {
       "get": {
         "tags": [
           "Properties"
@@ -282,7 +282,7 @@
         }
       }
     },
-    "/Properties/{propertyId}/images": {
+    "/api/Properties/{propertyId}/images": {
       "post": {
         "tags": [
           "Properties"
@@ -324,7 +324,7 @@
         }
       }
     },
-    "/Properties/{propertyId}/images/{imageId}": {
+    "/api/Properties/{propertyId}/images/{imageId}": {
       "delete": {
         "tags": [
           "Properties"
@@ -356,7 +356,7 @@
         }
       }
     },
-    "/Properties/{propertyId}/images/{imageId}/main": {
+    "/api/Properties/{propertyId}/images/{imageId}/main": {
       "put": {
         "tags": [
           "Properties"
@@ -424,6 +424,13 @@
           },
           "isActive": {
             "type": "boolean"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PropertyImageRequest"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

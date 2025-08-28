@@ -20,7 +20,7 @@
         public int Order { get; }
 
         public static (PropertyImage image, string error) Create(Guid id, Guid propertyId, string url,
-            bool isMain = false)
+    bool isMain = false, int order = 0) // Добавьте параметр order
         {
             var error = string.Empty;
 
@@ -33,7 +33,12 @@
                 error = $"URL cannot be longer than {MAX_URL_LENGTH} symbols";
             }
 
-            var image = new PropertyImage(id, propertyId, url, isMain, 0);
+            if (propertyId == Guid.Empty)
+            {
+                error = "Property ID cannot be empty";
+            }
+
+            var image = new PropertyImage(id, propertyId, url, isMain, order);
             return (image, error);
         }
     }

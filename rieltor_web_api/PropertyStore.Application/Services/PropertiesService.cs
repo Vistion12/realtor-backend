@@ -29,6 +29,32 @@ namespace PropertyStore.Application.Services
                 area, rooms, description, isActive, createdAt);
         }
 
+        public async Task RemoveAllImagesFromProperty(Guid propertyId)
+        {
+            await _propertiesRepository.RemoveAllImagesFromProperty(propertyId);
+        }
+
+        public async Task AddImagesToProperty(Guid propertyId, List<PropertyImage> images)
+        {
+            foreach (var image in images)
+            {
+                if (image.PropertyId != propertyId)
+                    throw new ArgumentException("Image does not belong to this property");
+
+                var (_, error) = PropertyImage.Create(image.Id, image.PropertyId, image.Url, image.IsMain);
+
+                if (!string.IsNullOrEmpty(error))
+                    throw new ArgumentException(error);
+            }
+
+            // Здесь нужно добавить реализацию массового добавления в репозиторий
+            // Или вызывать AddImageToProperty для каждого изображения
+            foreach (var image in images)
+            {
+                await _propertiesRepository.AddImageToProperty(propertyId, image);
+            }
+        }
+
         public async Task<Guid> DeleteProperty(Guid id)
         {
             return await _propertiesRepository.Delete(id);

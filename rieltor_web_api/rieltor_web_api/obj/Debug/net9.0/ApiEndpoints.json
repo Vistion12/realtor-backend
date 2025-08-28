@@ -28,7 +28,7 @@
   {
     "ContainingType": "rieltor_web_api.Controllers.PropertiesController",
     "Method": "GetProperties",
-    "RelativePath": "Properties",
+    "RelativePath": "api/Properties",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -48,7 +48,7 @@
   {
     "ContainingType": "rieltor_web_api.Controllers.PropertiesController",
     "Method": "CreateProperty",
-    "RelativePath": "Properties",
+    "RelativePath": "api/Properties",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -74,7 +74,7 @@
   {
     "ContainingType": "rieltor_web_api.Controllers.PropertiesController",
     "Method": "GetPropertyById",
-    "RelativePath": "Properties/{id}",
+    "RelativePath": "api/Properties/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -100,7 +100,7 @@
   {
     "ContainingType": "rieltor_web_api.Controllers.PropertiesController",
     "Method": "UpdateProperties",
-    "RelativePath": "Properties/{id}",
+    "RelativePath": "api/Properties/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -131,7 +131,7 @@
   {
     "ContainingType": "rieltor_web_api.Controllers.PropertiesController",
     "Method": "DeleteProperty",
-    "RelativePath": "Properties/{id}",
+    "RelativePath": "api/Properties/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -157,7 +157,7 @@
   {
     "ContainingType": "rieltor_web_api.Controllers.PropertiesController",
     "Method": "AddImageToProperty",
-    "RelativePath": "Properties/{propertyId}/images",
+    "RelativePath": "api/Properties/{propertyId}/images",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -178,7 +178,7 @@
   {
     "ContainingType": "rieltor_web_api.Controllers.PropertiesController",
     "Method": "RemoveImageFromProperty",
-    "RelativePath": "Properties/{propertyId}/images/{imageId}",
+    "RelativePath": "api/Properties/{propertyId}/images/{imageId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -199,7 +199,7 @@
   {
     "ContainingType": "rieltor_web_api.Controllers.PropertiesController",
     "Method": "SetMainImage",
-    "RelativePath": "Properties/{propertyId}/images/{imageId}/main",
+    "RelativePath": "api/Properties/{propertyId}/images/{imageId}/main",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
