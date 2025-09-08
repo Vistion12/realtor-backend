@@ -20,7 +20,7 @@
         public int Order { get; }
 
         public static (PropertyImage image, string error) Create(Guid id, Guid propertyId, string url,
-    bool isMain = false, int order = 0) // Добавьте параметр order
+    bool isMain = false, int order = 0) 
         {
             var error = string.Empty;
 

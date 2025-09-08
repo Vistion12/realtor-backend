@@ -47,8 +47,7 @@ namespace PropertyStore.Application.Services
                     throw new ArgumentException(error);
             }
 
-            // Здесь нужно добавить реализацию массового добавления в репозиторий
-            // Или вызывать AddImageToProperty для каждого изображения
+            
             foreach (var image in images)
             {
                 await _propertiesRepository.AddImageToProperty(propertyId, image);

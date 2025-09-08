@@ -217,13 +217,12 @@ namespace PropertyStore.DataAccess.Repository
 
                 if (string.IsNullOrEmpty(imageError))
                 {
-                    // Восстанавливаем порядок
                     var imageWithOrder = new
                     {
                         Image = image,
                         Order = imageEntity.Order
                     };
-                    // Здесь нужно добавить логику для сохранения порядка
+                    
                     property.AddImage(image);
                 }
             }

@@ -22,6 +22,50 @@ namespace PropertyStore.DataAccess.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("PropertyStore.DataAccess.Entities.ClientEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<string>("Source")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("Email");
+
+                    b.HasIndex("Phone");
+
+                    b.HasIndex("Source");
+
+                    b.ToTable("Clients");
+                });
+
             modelBuilder.Entity("PropertyStore.DataAccess.Entities.PropertyEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -100,6 +144,49 @@ namespace PropertyStore.DataAccess.Migrations
                     b.ToTable("PropertyImages");
                 });
 
+            modelBuilder.Entity("PropertyStore.DataAccess.Entities.RequestEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ClientId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("character varying(2000)");
+
+                    b.Property<Guid?>("PropertyId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("PropertyId");
+
+                    b.HasIndex("Status");
+
+                    b.HasIndex("Type");
+
+                    b.ToTable("Requests");
+                });
+
             modelBuilder.Entity("PropertyStore.DataAccess.Entities.PropertyImageEntity", b =>
                 {
                     b.HasOne("PropertyStore.DataAccess.Entities.PropertyEntity", "Property")
@@ -109,6 +196,29 @@ namespace PropertyStore.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Property");
+                });
+
+            modelBuilder.Entity("PropertyStore.DataAccess.Entities.RequestEntity", b =>
+                {
+                    b.HasOne("PropertyStore.DataAccess.Entities.ClientEntity", "Client")
+                        .WithMany("Requests")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PropertyStore.DataAccess.Entities.PropertyEntity", "Property")
+                        .WithMany()
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Property");
+                });
+
+            modelBuilder.Entity("PropertyStore.DataAccess.Entities.ClientEntity", b =>
+                {
+                    b.Navigation("Requests");
                 });
 
             modelBuilder.Entity("PropertyStore.DataAccess.Entities.PropertyEntity", b =>
