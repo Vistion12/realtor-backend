@@ -7,6 +7,7 @@ namespace PropertyStore.DataAccess.Repository
         Task<Guid> Create(Property property);
         Task<Guid> Delete(Guid id);
         Task<List<Property>> Get();
+        Task<List<Property>> GetByType(string? type);
         Task<Guid> Update(Guid id, string title, string type, decimal price, string address,
     decimal area, int rooms, string description, bool isActive, DateTime createdAt);
         Task RemoveAllImagesFromProperty(Guid propertyId);

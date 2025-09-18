@@ -7,6 +7,7 @@ namespace PropertyStore.Application.Services
         Task<Guid> CreateProperty(Property property);
         Task<Guid> DeleteProperty(Guid id);
         Task<List<Property>> GetAllProperties();
+        Task<List<Property>> GetAllPropertiesByType(string? type);
         Task<Guid> UpdateProperty(Guid id, string title, string type, decimal price, string address,
                                     decimal area, int rooms, string description, bool isActive, DateTime createdAt);
         Task AddImagesToProperty(Guid propertyId, List<PropertyImage> images);

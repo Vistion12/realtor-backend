@@ -17,9 +17,19 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpGet]
-        public async Task <ActionResult<List<PropertiesResponse>>> GetProperties()
+        public async Task<ActionResult<List<PropertiesResponse>>> GetProperties([FromQuery] string? type)
         {
-            var properties = await _propertiesService.GetAllProperties();
+            // Выбираем, какой метод сервиса вызвать в зависимости от наличия параметра
+            List<Property> properties;
+            if (string.IsNullOrEmpty(type))
+            {
+                properties = await _propertiesService.GetAllProperties();
+            }
+            else
+            {
+                properties = await _propertiesService.GetAllPropertiesByType(type);
+            }
+
             var response = properties.Select(MapToResponse);
             return Ok(response);
         }

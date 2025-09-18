@@ -187,7 +187,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "type",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[rieltor_web_api.Contracts.PropertiesResponse, rieltor_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",

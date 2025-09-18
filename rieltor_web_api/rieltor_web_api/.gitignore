@@ -1,0 +1,20 @@
+# Docker
+docker-compose.yml
+.dockerignore
+
+# ASP.NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+.vs/
+*.swp
+*.db
+*.log
+logs/
+
+# Environment variables
+.env
+*.env
+appsettings.Development.json

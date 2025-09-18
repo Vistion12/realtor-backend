@@ -22,6 +22,22 @@ namespace PropertyStore.DataAccess.Repository
             return propertyEntities.Select(MapToDomain).ToList();
         }
 
+        // Новый метод с фильтрацией
+        public async Task<List<Property>> GetByType(string? type)
+        {
+            var query = dbContext.Properties
+                .Include(p => p.Images)
+                .AsNoTracking();
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                query = query.Where(p => p.Type.ToLower() == type.ToLower());
+            }
+
+            var propertyEntities = await query.ToListAsync();
+            return propertyEntities.Select(MapToDomain).ToList();
+        }
+
         public async Task<Guid> Create(Property property)
         {
             using var transaction = await dbContext.Database.BeginTransactionAsync();

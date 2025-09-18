@@ -17,6 +17,11 @@ namespace PropertyStore.Application.Services
             return await _propertiesRepository.Get();
         }
 
+        public async Task<List<Property>> GetAllPropertiesByType(string? type)
+        {
+            return await _propertiesRepository.GetByType(type);
+        }
+
         public async Task<Guid> CreateProperty(Property property)
         {
             return await _propertiesRepository.Create(property);
