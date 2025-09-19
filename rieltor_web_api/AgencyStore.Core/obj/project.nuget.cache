@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "SDq4tJXB16g=",
+  "dgSpecHash": "4W+8NVtMBQk=",
   "success": true,
   "projectFilePath": "C:\\Users\\Vistion\\Desktop\\academy\\homeWork\\rieltor_project\\back\\rieltor_web_api\\AgencyStore.Core\\AgencyStore.Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Vistion\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.9\\microsoft.extensions.dependencyinjection.abstractions.9.0.9.nupkg.sha512",
+    "C:\\Users\\Vistion\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.9\\microsoft.extensions.logging.abstractions.9.0.9.nupkg.sha512",
+    "C:\\Users\\Vistion\\.nuget\\packages\\microsoft.extensions.options\\9.0.9\\microsoft.extensions.options.9.0.9.nupkg.sha512",
+    "C:\\Users\\Vistion\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.9\\microsoft.extensions.primitives.9.0.9.nupkg.sha512"
+  ],
   "logs": []
 }

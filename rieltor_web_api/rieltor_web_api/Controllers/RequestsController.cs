@@ -12,11 +12,12 @@ namespace rieltor_web_api.Controllers
     {
         private readonly IRequestsService _requestsService;
         private readonly IClientsService _clientsService;
-
-        public RequestsController(IRequestsService requestsService, IClientsService clientsService)
+        private readonly ITelegramService _telegramService;
+        public RequestsController(IRequestsService requestsService, IClientsService clientsService, ITelegramService telegramService)
         {
             _requestsService = requestsService;
             _clientsService = clientsService;
+            _telegramService = telegramService;
         }
 
         [HttpGet]
@@ -80,7 +81,7 @@ namespace rieltor_web_api.Controllers
                     request.ClientPhone,
                     request.ClientEmail,
                     request.Source
-                );
+                );                
 
                 return Ok(requestId);
             }

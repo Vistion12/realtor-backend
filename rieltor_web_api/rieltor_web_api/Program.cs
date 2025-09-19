@@ -1,9 +1,10 @@
+using AgencyStore.Core.Abstractions;
+using AgencyStore.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using PropertyStore.Application.Services;
 using PropertyStore.DataAccess;
 using PropertyStore.DataAccess.Repository;
-using AgencyStore.Core.Abstractions;
 using System.Text;
 
 Console.OutputEncoding = Encoding.UTF8;
@@ -21,15 +22,22 @@ builder.Services.AddDbContext<PropertyStoreDBContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(PropertyStoreDBContext)));
 });
 
+// Регистрируем настройки Telegram
+builder.Services.Configure<TelegramBotSettings>(
+    builder.Configuration.GetSection("TelegramBot"));
+
+// Регистрируем HttpClient для TelegramService
+builder.Services.AddHttpClient<ITelegramService, TelegramService>();
 
 builder.Services.AddScoped<IPropertiesRepository, PropertiesRepository>();
 builder.Services.AddScoped<IClientsRepository, ClientsRepository>();
 builder.Services.AddScoped<IRequestsRepository, RequestsRepository>();
 
-
 builder.Services.AddScoped<IPropertiesService, PropertiesService>();
 builder.Services.AddScoped<IClientsService, ClientsService>();
 builder.Services.AddScoped<IRequestsService, RequestsService>();
+
+
 
 var app = builder.Build();
 

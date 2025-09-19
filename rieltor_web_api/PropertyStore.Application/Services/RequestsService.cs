@@ -1,5 +1,7 @@
 ﻿using AgencyStore.Core.Abstractions;
 using AgencyStore.Core.Models;
+using Microsoft.Extensions.Logging;
+using System.Text.Json;
 
 namespace PropertyStore.Application.Services
 {
@@ -7,21 +9,38 @@ namespace PropertyStore.Application.Services
     {
         private readonly IRequestsRepository _requestsRepository;
         private readonly IClientsService _clientsService;
+        private readonly ITelegramService _telegramService;
+        private readonly ILogger<RequestsService> _logger;
 
-        public RequestsService(IRequestsRepository requestsRepository, IClientsService clientsService)
+        public RequestsService(
+            IRequestsRepository requestsRepository,
+            IClientsService clientsService,
+            ITelegramService telegramService,
+            ILogger<RequestsService> logger)
         {
             _requestsRepository = requestsRepository;
             _clientsService = clientsService;
+            _telegramService = telegramService;
+            _logger = logger;
         }
+
         public async Task<Guid> CreateRequest(Request request)
         {
             return await _requestsRepository.Create(request);
         }
 
-        public async Task<Guid> CreateRequestWithClient(Guid? propertyId, string type, string message, string clientName, string clientPhone, string? clientEmail, string source)
+        public async Task<Guid> CreateRequestWithClient(
+            Guid? propertyId,
+            string type,
+            string message,
+            string clientName,
+            string clientPhone,
+            string? clientEmail,
+            string source)
         {
             // Находим или создаем клиента
-            var client = await _clientsService.FindOrCreateClient(clientName, clientPhone, clientEmail, source);
+            var client = await _clientsService.FindOrCreateClient(
+                clientName, clientPhone, clientEmail, source);
 
             // Создаем заявку
             var requestId = Guid.NewGuid();
@@ -38,7 +57,114 @@ namespace PropertyStore.Application.Services
             if (!string.IsNullOrEmpty(error))
                 throw new ArgumentException(error);
 
-            return await _requestsRepository.Create(request);
+            var createdRequestId = await _requestsRepository.Create(request);
+
+            // Отправляем уведомление в Telegram
+            await SendTelegramNotification(createdRequestId, request, client);
+
+            return createdRequestId;
+        }
+
+        private async Task SendTelegramNotification(Guid requestId, Request request, Client client)
+        {
+            try
+            {
+                var message = $"<b>🏠 НОВАЯ ЗАЯВКА #{requestId.ToString().Substring(0, 8).ToUpper()}</b>\n\n" +
+                             $"<b>📋 Тип:</b> {GetRequestTypeLabel(request.Type)}\n" +
+                             $"<b>👤 Имя:</b> {client.Name}\n" +
+                             $"<b>📞 Телефон:</b> <code>{client.Phone}</code>\n" +
+                             $"<b>📧 Email:</b> {client.Email ?? "не указан"}\n" +
+                             $"<b>🌐 Источник:</b> {client.Source}\n\n";
+
+                // Парсим дополнительную информацию из JSON
+                var additionalInfo = ParseAdditionalInfo(request.Message, request.Type);
+                message += additionalInfo;
+
+                message += $"\n<code>📅 {DateTime.Now:dd.MM.yyyy HH:mm}</code>";
+
+                await _telegramService.SendMessageAsync(message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Ошибка отправки уведомления в Telegram для заявки {RequestId}", requestId);
+            }
+        }
+
+        private string ParseAdditionalInfo(string messageJson, string requestType)
+        {
+            if (string.IsNullOrEmpty(messageJson))
+                return string.Empty;
+
+            try
+            {
+                var jsonDocument = JsonDocument.Parse(messageJson);
+                var root = jsonDocument.RootElement;
+
+                var result = string.Empty;
+
+                if (requestType == "consultation")
+                {
+                    // Для консультации
+                    if (root.TryGetProperty("purpose", out var purpose))
+                    {
+                        result += $"<b>🎯 Цель:</b> {GetPurposeLabel(purpose.GetString())}\n";
+                    }
+                    if (root.TryGetProperty("message", out var message) && !string.IsNullOrEmpty(message.GetString()))
+                    {
+                        result += $"<b>💬 Комментарий:</b>\n{message.GetString()}\n";
+                    }
+                }
+                else if (requestType == "viewing")
+                {
+                    // Для просмотра
+                    if (root.TryGetProperty("preferredDate", out var date) && DateTime.TryParse(date.GetString(), out var preferredDate))
+                    {
+                        result += $"<b>📅 Желаемая дата:</b> {preferredDate:dd.MM.yyyy HH:mm}\n";
+                    }
+                    if (root.TryGetProperty("message", out var message) && !string.IsNullOrEmpty(message.GetString()))
+                    {
+                        result += $"<b>💬 Комментарий:</b>\n{message.GetString()}\n";
+                    }
+                    // Добавляем информацию об объекте
+                    if (root.TryGetProperty("propertyTitle", out var title))
+                    {
+                        result += $"<b>📍 Объект:</b> {title.GetString()}\n";
+                    }
+                    if (root.TryGetProperty("propertyAddress", out var address))
+                    {
+                        result += $"<b>🏢 Адрес объекта:</b> {address.GetString()}\n";
+                    }
+                }
+
+                return result + "\n";
+            }
+            catch
+            {
+                // Если не удалось распарсить JSON, показываем как есть (но обрезаем)
+                return $"<b>💬 Сообщение:</b>\n{(messageJson.Length > 200 ? messageJson.Substring(0, 200) + "..." : messageJson)}\n\n";
+            }
+        }
+
+        private string GetPurposeLabel(string? purpose)
+        {
+            return purpose?.ToLower() switch
+            {
+                "buy" => "Купить недвижимость",
+                "sell" => "Продать недвижимость",
+                "rent" => "Арендовать",
+                "other" => "Другое",
+                _ => purpose ?? "Не указана"
+            };
+        }
+
+        private string GetRequestTypeLabel(string type)
+        {
+            return type.ToLower() switch
+            {
+                "consultation" => "Консультация",
+                "viewing" => "Просмотр объекта",
+                _ => type
+            };
         }
 
         public async Task<Guid> DeleteRequest(Guid id)
@@ -71,7 +197,7 @@ namespace PropertyStore.Application.Services
             return await _requestsRepository.GetWithDetails(id);
         }
 
-        public  async Task<Guid> UpdateRequestStatus(Guid id, string status)
+        public async Task<Guid> UpdateRequestStatus(Guid id, string status)
         {
             return await _requestsRepository.UpdateStatus(id, status);
         }

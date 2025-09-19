@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("rieltor_web_api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9db087c1663145d7392a3c087ad2b759d81e8054")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+929e6ac582473de83fab65c32cf71aaef7e12b98")]
 [assembly: System.Reflection.AssemblyProductAttribute("rieltor_web_api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("rieltor_web_api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
