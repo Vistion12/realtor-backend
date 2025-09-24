@@ -14,12 +14,15 @@ namespace PropertyStore.DataAccess
         public DbSet<ClientEntity> Clients { get; set; }
         public DbSet<RequestEntity> Requests { get; set; }
 
+        public DbSet<UserEntity> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PropertyConfiguration());
             modelBuilder.ApplyConfiguration(new PropertyImageConfiguration());
             modelBuilder.ApplyConfiguration(new ClientConfiguration());
             modelBuilder.ApplyConfiguration(new RequestConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
         }
     }
 }

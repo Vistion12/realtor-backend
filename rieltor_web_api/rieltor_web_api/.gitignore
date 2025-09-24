@@ -1,7 +1,3 @@
-# Docker
-docker-compose.yml
-.dockerignore
-
 # ASP.NET
 bin/
 obj/
@@ -18,3 +14,14 @@ logs/
 .env
 *.env
 appsettings.Development.json
+appsettings.Production.json
+
+# Docker
+docker-compose.yml
+.dockerignore
+
+# Sensitive data
+uploads/
+secrets.json
+*.pfx
+*.p12
