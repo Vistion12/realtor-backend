@@ -1,4 +1,5 @@
 ﻿using AgencyStore.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PropertyStore.Application.Services;
 using rieltor_web_api.Contracts;
@@ -17,6 +18,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<List<PropertiesResponse>>> GetProperties([FromQuery] string? type)
         {
             // Выбираем, какой метод сервиса вызвать в зависимости от наличия параметра
@@ -35,6 +37,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpGet("{id:guid}")]
+        [AllowAnonymous]
         public async Task<ActionResult<PropertiesResponse>> GetPropertyById(Guid id)
         {
             var property = await _propertiesService.GetPropertyById(id);
@@ -45,6 +48,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Guid>> CreateProperty([FromBody] PropertiesRequest request)
         {
             var (property, error) = Property.Create(
@@ -96,6 +100,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpPut("{id:guid}")]
+        [Authorize]
         public async Task<ActionResult<Guid>> UpdateProperties(Guid id, [FromBody] PropertiesRequest request)
         {
             var propertyId = await _propertiesService.UpdateProperty(
@@ -119,12 +124,14 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpDelete("{id:guid}")]
+        [Authorize]
         public async Task<ActionResult<Guid>> DeleteProperty(Guid id)
         {
             return Ok(await _propertiesService.DeleteProperty(id));
         }
 
         [HttpPost("{propertyId:guid}/images")]
+        [Authorize]
         public async Task<ActionResult> AddImageToProperty(Guid propertyId, [FromBody] PropertyImageRequest request)
         {
             try
@@ -139,6 +146,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpDelete("{propertyId:guid}/images/{imageId:guid}")]
+        [Authorize]
         public async Task<ActionResult> RemoveImageFromProperty(Guid propertyId, Guid imageId)
         {
             try
@@ -153,6 +161,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpPut("{propertyId:guid}/images/{imageId:guid}/main")]
+        [Authorize]
         public async Task<ActionResult> SetMainImage(Guid propertyId, Guid imageId)
         {
             try

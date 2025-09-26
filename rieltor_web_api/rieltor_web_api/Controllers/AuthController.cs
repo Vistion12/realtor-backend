@@ -1,4 +1,5 @@
 ﻿using AgencyStore.Core.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using rieltor_web_api.Contracts;
 
@@ -6,6 +7,7 @@ namespace rieltor_web_api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [AllowAnonymous]
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;

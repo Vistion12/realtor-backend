@@ -1,5 +1,6 @@
 ﻿using AgencyStore.Core.Abstractions;
 using AgencyStore.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PropertyStore.Application.Services;
 using rieltor_web_api.Contracts;
@@ -21,6 +22,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<List<RequestResponse>>> GetRequests()
         {
             var requests = await _requestsService.GetAllRequests();
@@ -29,6 +31,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpGet("{id:guid}")]
+        [Authorize]
         public async Task<ActionResult<RequestResponse>> GetRequestById(Guid id)
         {
             var request = await _requestsService.GetRequestById(id);
@@ -39,6 +42,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpGet("status/{status}")]
+        [Authorize]
         public async Task<ActionResult<List<RequestResponse>>> GetRequestsByStatus(string status)
         {
             var requests = await _requestsService.GetRequestsByStatus(status);
@@ -47,6 +51,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpGet("client/{clientId:guid}")]
+        [Authorize]
         public async Task<ActionResult<List<RequestResponse>>> GetRequestsByClientId(Guid clientId)
         {
             var requests = await _requestsService.GetRequestsByClientId(clientId);
@@ -55,6 +60,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpGet("{id:guid}/with-details")]
+        [Authorize]
         public async Task<ActionResult<RequestResponse>> GetRequestWithDetails(Guid id)
         {
             var request = await _requestsService.GetRequestById(id);
@@ -69,6 +75,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult<Guid>> CreateRequest([FromBody] RequestRequest request)
         {
             try
@@ -96,6 +103,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpPut("{id:guid}/status")]
+        [Authorize]
         public async Task<ActionResult<Guid>> UpdateRequestStatus(Guid id, [FromBody] string status)
         {
             try
@@ -114,6 +122,7 @@ namespace rieltor_web_api.Controllers
         }
 
         [HttpDelete("{id:guid}")]
+        [Authorize]
         public async Task<ActionResult<Guid>> DeleteRequest(Guid id)
         {
             try
