@@ -2,7 +2,6 @@
 using AgencyStore.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PropertyStore.Application.Services;
 using rieltor_web_api.Contracts;
 
 namespace rieltor_web_api.Controllers

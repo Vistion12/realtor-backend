@@ -1,6 +1,7 @@
 using AgencyStore.Core.Abstractions;
 using AgencyStore.Core.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
@@ -64,36 +65,64 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Secret"]))
         };
+
+        // ÄÎÁÀÂÜÒÅ ÝÒÎ ÄËß ÎÒËÀÄÊÈ
+        options.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                Console.WriteLine($" Authentication failed: {context.Exception.Message}");
+                return Task.CompletedTask;
+            },
+            OnForbidden = context =>
+            {
+                Console.WriteLine($" Forbidden: {context.HttpContext.Request.Path}");
+                return Task.CompletedTask;
+            },
+            OnChallenge = context =>
+            {
+                Console.WriteLine($" Challenge: {context.Error} - {context.ErrorDescription}");
+                return Task.CompletedTask;
+            }
+        };
     });
 
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
+app.UseCors(x =>
 {
-    try
-    {
-        var context = scope.ServiceProvider.GetRequiredService<PropertyStoreDBContext>();
+    x.AllowAnyHeader();
+    x.AllowAnyMethod();
+    x.WithOrigins("http://localhost:3000")
+     .AllowCredentials();
+});
 
-        
-        context.Database.Migrate();
 
-        
-        UserSeeder.Seed(context);
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Error during seeding: {ex.Message}");
-    }
-}
+app.Use(async (context, next) =>
+{
+    Console.WriteLine($"IN: {context.Request.Method} {context.Request.Path}");
+    Console.WriteLine($"Query: {context.Request.QueryString}");
+    await next();
+    Console.WriteLine($"OUT: {context.Request.Method} {context.Request.Path} - {context.Response.StatusCode}");
+});
+
+app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseExceptionHandler("/error");
+app.UseStatusCodePagesWithReExecute("/error/{0}");
+
+
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 
 var uploadsPath = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
 if (!Directory.Exists(uploadsPath))
@@ -104,24 +133,31 @@ app.UseStaticFiles(new StaticFileOptions
     FileProvider = new PhysicalFileProvider(
         Path.Combine(builder.Environment.ContentRootPath, "uploads")),
     RequestPath = "/uploads",
-    ServeUnknownFileTypes = true
+    ServeUnknownFileTypes = false
 });
 
-app.UseExceptionHandler("/error");
-app.UseStatusCodePagesWithReExecute("/error/{0}");
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
-app.UseAuthorization();
 
-app.MapControllers();
-
-app.UseCors(x =>
+using (var scope = app.Services.CreateScope())
 {
-    x.AllowAnyHeader();
-    x.AllowAnyMethod();
-    x.AllowAnyOrigin();
+    try
+    {
+        var context = scope.ServiceProvider.GetRequiredService<PropertyStoreDBContext>();
+        context.Database.Migrate();
+        UserSeeder.Seed(context);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error during seeding: {ex.Message}");
+    }
+}
+
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
 });
 
 app.Run();
