@@ -11,5 +11,6 @@
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public List<RequestEntity> Requests { get; set; } = new();
+        public List<DealEntity> Deals { get; set; } = new();
     }
 }

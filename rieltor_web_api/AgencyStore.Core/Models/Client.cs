@@ -30,6 +30,19 @@
         private readonly List<Request> _requests = new();
         public IReadOnlyList<Request> Requests => _requests.AsReadOnly();
 
+        private readonly List<Deal> _deals = new();
+        public IReadOnlyList<Deal> Deals => _deals.AsReadOnly();
+
+        public void AddDeal(Deal deal)
+        {
+            _deals.Add(deal);
+        }
+
+        public IEnumerable<Deal> GetActiveDeals()
+        {
+            return _deals.Where(d => d.IsActive);
+        }
+
         public void AddRequest(Request request)
         {
             if (request.ClientId != Id)
