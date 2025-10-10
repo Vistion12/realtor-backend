@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rieltor_web_api", "rieltor_web_api\rieltor_web_api.csproj", "{8E0FEF12-6554-4A5D-B959-761994EB23CE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A06DA853-9794-4CD8-98BD-140695807942} = {A06DA853-9794-4CD8-98BD-140695807942}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgencyStore.Core", "AgencyStore.Core\AgencyStore.Core.csproj", "{A06DA853-9794-4CD8-98BD-140695807942}"
 EndProject

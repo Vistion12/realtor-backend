@@ -66,7 +66,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Secret"]))
         };
 
-        // ÄÎÁÀÂÜÒÅ ÝÒÎ ÄËß ÎÒËÀÄÊÈ
+        
         options.Events = new JwtBearerEvents
         {
             OnAuthenticationFailed = context =>
