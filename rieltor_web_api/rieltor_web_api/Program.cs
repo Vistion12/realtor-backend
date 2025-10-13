@@ -51,6 +51,16 @@ builder.Services.AddScoped<IPropertiesService, PropertiesService>();
 builder.Services.AddScoped<IClientsService, ClientsService>();
 builder.Services.AddScoped<IRequestsService, RequestsService>();
 
+builder.Services.AddScoped<IDealPipelineRepository, DealPipelineRepository>();
+builder.Services.AddScoped<IDealStageRepository, DealStageRepository>();
+builder.Services.AddScoped<IDealRepository, DealRepository>();
+builder.Services.AddScoped<IDealHistoryRepository, DealHistoryRepository>();
+
+builder.Services.AddScoped<IDealPipelineService, DealPipelineService>();
+builder.Services.AddScoped<IDealStageService, DealStageService>();
+builder.Services.AddScoped<IDealService, DealService>();
+builder.Services.AddScoped<IDealHistoryService, DealHistoryService>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
