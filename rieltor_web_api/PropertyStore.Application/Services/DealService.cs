@@ -164,11 +164,25 @@ namespace PropertyStore.Application.Services
                 if (newStage == null)
                     return (false, "Этап не найден");
 
+                // 1. Проверка принадлежности к одной воронке
+                if (newStage.PipelineId != deal.PipelineId)
+                    return (false, "Этап не принадлежит текущей воронке сделки");
+
+                // 2. Проверка что это не тот же этап
+                if (newStage.Id == deal.CurrentStageId)
+                    return (false, "Сделка уже находится на этом этапе");
+
+                // 3. Проверка бизнес-правил переходов
+                var validationResult = await ValidateStageTransition(deal.CurrentStageId, newStage.Id);
+                if (!validationResult.IsValid)
+                    return (false, validationResult.ErrorMessage);
+
                 var (success, error) = deal.MoveToStage(newStage, notes);
                 if (success)
                 {
                     await _dealRepository.Update(deal);
-                    _logger.LogInformation("Сделка {DealId} перемещена на этап {StageName}", dealId, newStage.Name);
+                    _logger.LogInformation("Сделка {DealId} перемещена с этапа {FromStage} на этап {ToStage}",
+                        dealId, deal.CurrentStage?.Name, newStage.Name);
                 }
 
                 return (success, error);
@@ -179,6 +193,31 @@ namespace PropertyStore.Application.Services
                 return (false, $"Ошибка при перемещении сделки: {ex.Message}");
             }
         }
+
+
+        private async Task<(bool IsValid, string ErrorMessage)> ValidateStageTransition(Guid fromStageId, Guid toStageId)
+        {
+            var fromStage = await _stageRepository.GetById(fromStageId);
+            var toStage = await _stageRepository.GetById(toStageId);
+
+            if (fromStage == null || toStage == null)
+                return (false, "Этапы не найдены");
+
+            // Правило: нельзя перескакивать через этапы (можно отключить если нужно)
+            if (Math.Abs(fromStage.Order - toStage.Order) > 1)
+                return (false, "Нельзя пропускать этапы воронки. Переход только на соседние этапы.");
+
+            // Правило: нельзя двигаться назад без особой причины (можно настроить)
+            if (toStage.Order < fromStage.Order)
+            {
+                // Можно добавить логику для разрешенных откатов
+                // Пока разрешаем, но логируем
+                _logger.LogWarning("Обратный переход с этапа {FromStage} на {ToStage}", fromStage.Name, toStage.Name);
+            }
+
+            return (true, string.Empty);
+        }
+
 
         public async Task<bool> ReopenDeal(Guid dealId)
         {

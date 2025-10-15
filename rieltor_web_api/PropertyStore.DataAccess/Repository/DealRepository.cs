@@ -148,20 +148,172 @@ namespace PropertyStore.DataAccess.Repository
 
         public async Task<Deal?> GetByIdWithDetails(Guid id)
         {
-            var entity = await _dbContext.Deals
-                .Include(d => d.Client)
-                .Include(d => d.Pipeline)
-                .Include(d => d.CurrentStage)
-                .Include(d => d.Property)
-                .Include(d => d.Request)
-                .Include(d => d.History)
-                    .ThenInclude(h => h.FromStage)
-                .Include(d => d.History)
-                    .ThenInclude(h => h.ToStage)
+            var result = await _dbContext.Deals
+                .Where(d => d.Id == id)
+                .Select(d => new
+                {
+                    Deal = d,
+                    Client = d.Client,
+                    Pipeline = d.Pipeline,
+                    CurrentStage = d.CurrentStage,
+                    Property = d.Property,
+                    Request = d.Request,
+                    History = d.History.Select(h => new
+                    {
+                        History = h,
+                        FromStage = h.FromStage,
+                        ToStage = h.ToStage
+                    }).OrderBy(h => h.History.ChangedAt).ToList()
+                })
                 .AsNoTracking()
-                .FirstOrDefaultAsync(d => d.Id == id);
+                .FirstOrDefaultAsync();
 
-            return entity != null ? MapToDomain(entity) : null;
+            if (result == null) return null;
+
+            return MapToDomainWithProjection(result);
+        }
+
+        private Deal MapToDomainWithProjection(dynamic result)
+        {
+            var entity = (DealEntity)result.Deal;
+            var clientEntity = (ClientEntity?)result.Client;
+            var pipelineEntity = (DealPipelineEntity?)result.Pipeline;
+            var currentStageEntity = (DealStageEntity?)result.CurrentStage;
+            var propertyEntity = (PropertyEntity?)result.Property;
+            var requestEntity = (RequestEntity?)result.Request;
+            var historyData = (List<dynamic>?)result.History;
+
+            var (deal, error) = Deal.Create(
+                entity.Id,
+                entity.Title,
+                entity.ClientId,
+                entity.PipelineId,
+                entity.CurrentStageId,
+                entity.PropertyId,
+                entity.RequestId,
+                entity.Notes,
+                entity.DealAmount,
+                entity.ExpectedCloseDate
+            );
+
+            if (!string.IsNullOrEmpty(error))
+                throw new InvalidOperationException($"Invalid deal data: {error}");
+
+            deal.StageStartedAt = entity.StageStartedAt;
+            deal.StageDeadline = entity.StageDeadline;
+            deal.CreatedAt = entity.CreatedAt;
+            deal.UpdatedAt = entity.UpdatedAt;
+            deal.ClosedAt = entity.ClosedAt;
+            deal.IsActive = entity.IsActive;
+
+            // Маппинг связанных сущностей из projection
+            if (clientEntity != null)
+            {
+                var (client, clientError) = Client.Create(
+                    clientEntity.Id,
+                    clientEntity.Name,
+                    clientEntity.Phone,
+                    clientEntity.Email,
+                    clientEntity.Source,
+                    clientEntity.Notes,
+                    clientEntity.CreatedAt
+                );
+                if (string.IsNullOrEmpty(clientError)) deal.Client = client;
+            }
+
+            if (pipelineEntity != null)
+            {
+                var (pipeline, pipelineError) = DealPipeline.Create(
+                    pipelineEntity.Id,
+                    pipelineEntity.Name,
+                    pipelineEntity.Description
+                );
+                if (string.IsNullOrEmpty(pipelineError))
+                {
+                    pipeline.IsActive = pipelineEntity.IsActive;
+                    pipeline.CreatedAt = pipelineEntity.CreatedAt;
+                    pipeline.UpdatedAt = pipelineEntity.UpdatedAt;
+                    deal.Pipeline = pipeline;
+                }
+            }
+
+            if (currentStageEntity != null)
+            {
+                var (stage, stageError) = DealStage.Create(
+                    currentStageEntity.Id,
+                    currentStageEntity.Name,
+                    currentStageEntity.Order,
+                    currentStageEntity.ExpectedDuration,
+                    currentStageEntity.PipelineId,
+                    currentStageEntity.Description
+                );
+                if (string.IsNullOrEmpty(stageError))
+                {
+                    stage.CreatedAt = currentStageEntity.CreatedAt;
+                    deal.CurrentStage = stage;
+                }
+            }
+
+            // Маппинг истории из projection
+            if (historyData != null)
+            {
+                foreach (var historyItem in historyData)
+                {
+                    var historyEntity = (DealHistoryEntity)historyItem.History;
+                    var fromStageEntity = (DealStageEntity)historyItem.FromStage;
+                    var toStageEntity = (DealStageEntity)historyItem.ToStage;
+
+                    var history = DealHistory.Create(
+                        historyEntity.Id,
+                        historyEntity.DealId,
+                        historyEntity.FromStageId,
+                        historyEntity.ToStageId,
+                        historyEntity.TimeInStage,
+                        historyEntity.Notes
+                    );
+
+                    history.ChangedAt = historyEntity.ChangedAt;
+
+                    // Маппинг этапов истории
+                    if (fromStageEntity != null)
+                    {
+                        var (fromStage, fromError) = DealStage.Create(
+                            fromStageEntity.Id,
+                            fromStageEntity.Name,
+                            fromStageEntity.Order,
+                            fromStageEntity.ExpectedDuration,
+                            fromStageEntity.PipelineId,
+                            fromStageEntity.Description
+                        );
+                        if (string.IsNullOrEmpty(fromError))
+                        {
+                            fromStage.CreatedAt = fromStageEntity.CreatedAt;
+                            history.FromStage = fromStage;
+                        }
+                    }
+
+                    if (toStageEntity != null)
+                    {
+                        var (toStage, toError) = DealStage.Create(
+                            toStageEntity.Id,
+                            toStageEntity.Name,
+                            toStageEntity.Order,
+                            toStageEntity.ExpectedDuration,
+                            toStageEntity.PipelineId,
+                            toStageEntity.Description
+                        );
+                        if (string.IsNullOrEmpty(toError))
+                        {
+                            toStage.CreatedAt = toStageEntity.CreatedAt;
+                            history.ToStage = toStage;
+                        }
+                    }
+
+                    deal.History.Add(history);
+                }
+            }
+
+            return deal;
         }
 
         public async Task<int> GetDealsCountByStage(Guid stageId)
