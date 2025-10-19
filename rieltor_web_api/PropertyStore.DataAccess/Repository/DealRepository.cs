@@ -148,29 +148,30 @@ namespace PropertyStore.DataAccess.Repository
 
         public async Task<Deal?> GetByIdWithDetails(Guid id)
         {
-            var result = await _dbContext.Deals
-                .Where(d => d.Id == id)
-                .Select(d => new
-                {
-                    Deal = d,
-                    Client = d.Client,
-                    Pipeline = d.Pipeline,
-                    CurrentStage = d.CurrentStage,
-                    Property = d.Property,
-                    Request = d.Request,
-                    History = d.History.Select(h => new
-                    {
-                        History = h,
-                        FromStage = h.FromStage,
-                        ToStage = h.ToStage
-                    }).OrderBy(h => h.History.ChangedAt).ToList()
-                })
-                .AsNoTracking()
-                .FirstOrDefaultAsync();
+            return await GetById(id);
+            //var result = await _dbContext.Deals
+            //    .Where(d => d.Id == id)
+            //    .Select(d => new
+            //    {
+            //        Deal = d,
+            //        Client = d.Client,
+            //        Pipeline = d.Pipeline,
+            //        CurrentStage = d.CurrentStage,
+            //        Property = d.Property,
+            //        Request = d.Request,
+            //        History = d.History.Select(h => new
+            //        {
+            //            History = h,
+            //            FromStage = h.FromStage,
+            //            ToStage = h.ToStage
+            //        }).OrderBy(h => h.History.ChangedAt).ToList()
+            //    })
+            //    .AsNoTracking()
+            //    .FirstOrDefaultAsync();
 
-            if (result == null) return null;
+            //if (result == null) return null;
 
-            return MapToDomainWithProjection(result);
+            //return MapToDomainWithProjection(result);
         }
 
         private Deal MapToDomainWithProjection(dynamic result)
