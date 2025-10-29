@@ -8,6 +8,6 @@ namespace AgencyStore.Core.Abstractions
 {
     public interface ITelegramService
     {
-        Task SendMessageAsync(string message);
+        Task<bool> SendMessageAsync(string message);
     }
 }

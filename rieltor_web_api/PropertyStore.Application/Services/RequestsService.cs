@@ -59,8 +59,18 @@ namespace PropertyStore.Application.Services
 
             var createdRequestId = await _requestsRepository.Create(request);
 
-            // Отправляем уведомление в Telegram
-            await SendTelegramNotification(createdRequestId, request, client);
+            // ЗАПУСКАЕМ ОТПРАВКУ В TELEGRAM В ФОНЕ - НЕ БЛОКИРУЕМ ОСНОВНОЙ ПОТОК
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    await SendTelegramNotification(createdRequestId, request, client);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Фоновая отправка в Telegram не удалась для заявки {RequestId}", createdRequestId);
+                }
+            });
 
             return createdRequestId;
         }
@@ -82,11 +92,17 @@ namespace PropertyStore.Application.Services
 
                 message += $"\n<code>📅 {DateTime.Now:dd.MM.yyyy HH:mm}</code>";
 
-                await _telegramService.SendMessageAsync(message);
+                var success = await _telegramService.SendMessageAsync(message);
+
+                if (!success)
+                {
+                    _logger.LogWarning("Уведомление в Telegram не было отправлено для заявки {RequestId}", requestId);
+                }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Ошибка отправки уведомления в Telegram для заявки {RequestId}", requestId);
+                _logger.LogError(ex, "Критическая ошибка при подготовке уведомления для заявки {RequestId}", requestId);
+                // НЕ пробрасываем исключение - чтобы не ломать создание заявки
             }
         }
 

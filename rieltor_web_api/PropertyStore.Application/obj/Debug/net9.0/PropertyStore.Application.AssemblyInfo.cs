@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PropertyStore.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89939be3439bae5aa840601d67f98cfaf8c3cad0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+057a0246015a78b56b5f4132bf6bbfc2fafd7125")]
 [assembly: System.Reflection.AssemblyProductAttribute("PropertyStore.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PropertyStore.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
