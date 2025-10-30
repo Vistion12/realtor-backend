@@ -15,17 +15,20 @@ namespace rieltor_web_api.Controllers
         private readonly IClientsService _clientsService;
         private readonly IDealPipelineService _pipelineService;
         private readonly IDealStageService _stageService;
+        private readonly ILogger<DealsController> _logger;
 
         public DealsController(
             IDealService dealService,
             IClientsService clientsService,
             IDealPipelineService pipelineService,
-            IDealStageService stageService)
+            IDealStageService stageService,
+            ILogger<DealsController> logger)
         {
             _dealService = dealService;
             _clientsService = clientsService;
             _pipelineService = pipelineService;
             _stageService = stageService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -413,6 +416,28 @@ namespace rieltor_web_api.Controllers
                 fromStageResponse,
                 toStageResponse
             );
+        }
+
+        [HttpGet("pipeline/{pipelineId:guid}/property-types-analytics")]
+        public async Task<ActionResult<List<PropertyTypeAnalyticsResponse>>> GetPropertyTypesAnalytics(Guid pipelineId)
+        {
+            try
+            {
+                var analytics = await _dealService.GetPropertyTypeAnalytics(pipelineId);
+                var response = analytics.Select(a => new PropertyTypeAnalyticsResponse(
+                    a.PropertyType,
+                    a.DisplayName,
+                    a.DealCount,
+                    a.Percentage
+                )).ToList();
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Ошибка при получении аналитики по типам недвижимости для воронки {PipelineId}", pipelineId);
+                return StatusCode(500, $"Ошибка при получении аналитики по типам недвижимости: {ex.Message}");
+            }
         }
     }
 }

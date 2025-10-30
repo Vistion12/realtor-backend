@@ -26,6 +26,8 @@ namespace AgencyStore.Core.Abstractions
         // Аналитика
         Task<DealAnalytics> GetDealAnalytics(Guid pipelineId);
         Task<List<DealStageAnalytics>> GetPipelineAnalytics(Guid pipelineId);
+
+        Task<List<PropertyTypeAnalytics>> GetPropertyTypeAnalytics(Guid pipelineId);
     }
 
     public record DealAnalytics(
@@ -43,5 +45,12 @@ namespace AgencyStore.Core.Abstractions
         int DealCount,
         TimeSpan AverageTimeInStage,
         int OverdueDeals
+    );
+
+    public record PropertyTypeAnalytics(
+        string PropertyType,      // Техническое название: "novostroyki"
+        string DisplayName,       // Человекочитаемое: "Новостройки"  
+        int DealCount,            // Количество сделок
+        double Percentage         // Процент от общего числа
     );
 }

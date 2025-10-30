@@ -241,5 +241,123 @@ namespace PropertyStore.Application.Services
 
             return await _dealRepository.Update(deal);
         }
+
+        public async Task<List<PropertyTypeAnalytics>> GetPropertyTypeAnalytics(Guid pipelineId)
+        {
+            _logger.LogInformation("Starting property type analytics for pipeline {PipelineId}", pipelineId);
+
+            var deals = await _dealRepository.GetByPipelineId(pipelineId);
+            _logger.LogInformation("Found {DealCount} deals for pipeline", deals.Count);
+
+            // ПРИОРИТЕТ 1: Анализ по привязанным объектам недвижимости
+            var dealsWithProperty = deals.Where(d => d.PropertyId.HasValue && d.Property != null).ToList();
+
+            if (dealsWithProperty.Any())
+            {
+                _logger.LogInformation("Analyzing {Count} deals with property objects", dealsWithProperty.Count);
+
+                var typeGroups = dealsWithProperty
+                    .GroupBy(d => d.Property!.Type)
+                    .Select(g => new
+                    {
+                        PropertyType = g.Key,
+                        DealCount = g.Count()
+                    })
+                    .ToList();
+
+                var totalDealsWithProperty = typeGroups.Sum(g => g.DealCount);
+                var totalAllDeals = deals.Count;
+
+                // Маппинг технических названий на человекочитаемые
+                var typeDisplayNames = new Dictionary<string, string>
+        {
+            { "novostroyki", "Новостройки" },
+            { "secondary", "Вторичное жилье" },
+            { "rent", "Аренда" },
+            { "countryside", "Загородная недвижимость" },
+            { "invest", "Инвестиционные объекты" }
+        };
+
+                var result = typeGroups.Select(g => new PropertyTypeAnalytics(
+                    PropertyType: g.PropertyType,
+                    DisplayName: typeDisplayNames.GetValueOrDefault(g.PropertyType, g.PropertyType),
+                    DealCount: g.DealCount,
+                    Percentage: totalAllDeals > 0 ? Math.Round((double)g.DealCount / totalAllDeals * 100, 1) : 0
+                )).ToList();
+
+                // Добавляем категорию "Без привязки" для сделок без недвижимости
+                var dealsWithoutProperty = deals.Count(d => !d.PropertyId.HasValue || d.Property == null);
+                if (dealsWithoutProperty > 0)
+                {
+                    result.Add(new PropertyTypeAnalytics(
+                        PropertyType: "none",
+                        DisplayName: "Без привязки к объекту",
+                        DealCount: dealsWithoutProperty,
+                        Percentage: totalAllDeals > 0 ? Math.Round((double)dealsWithoutProperty / totalAllDeals * 100, 1) : 100
+                    ));
+                }
+
+                _logger.LogInformation(" Returning {ResultCount} analytics items from property data", result.Count);
+                return result;
+            }
+            else
+            {
+                // ПРИОРИТЕТ 2: Fallback - анализ по названиям сделок (для демонстрации)
+                _logger.LogInformation(" No properties found, using fallback title analysis");
+
+                var typeGroups = AnalyzeDealsByTitle(deals);
+                var totalAllDeals = deals.Count;
+
+                var result = typeGroups.Select(g => new PropertyTypeAnalytics(
+                    PropertyType: g.PropertyType,
+                    DisplayName: g.DisplayName,
+                    DealCount: g.DealCount,
+                    Percentage: totalAllDeals > 0 ? Math.Round((double)g.DealCount / totalAllDeals * 100, 1) : 0
+                )).ToList();
+
+                _logger.LogInformation("✅ Returning {ResultCount} analytics items from title analysis", result.Count);
+                return result;
+            }
+        }
+
+        // Fallback метод для анализа по названиям сделок
+        private List<(string PropertyType, string DisplayName, int DealCount)> AnalyzeDealsByTitle(List<Deal> deals)
+        {
+            var typeGroups = new Dictionary<string, (string DisplayName, int Count)>
+                {
+                    { "novostroyki", ("Новостройки", 0) },
+                    { "secondary", ("Вторичное жилье", 0) },
+                    { "rent", ("Аренда", 0) },
+                    { "countryside", ("Загородная недвижимость", 0) },
+                    { "invest", ("Инвестиционные объекты", 0) },
+                    { "other", ("Другое", 0) }
+                };
+
+            foreach (var deal in deals)
+            {
+                var title = deal.Title.ToLower();
+                string detectedType = "other";
+
+                if (title.Contains("новостр") || title.Contains("novostroyki") || title.Contains("новая"))
+                    detectedType = "novostroyki";
+                else if (title.Contains("вторич") || title.Contains("втор") || title.Contains("secondary") || title.Contains("вторичное"))
+                    detectedType = "secondary";
+                else if (title.Contains("аренд") || title.Contains("rent") || title.Contains("снять") || title.Contains("сдам"))
+                    detectedType = "rent";
+                else if (title.Contains("загород") || title.Contains("дача") || title.Contains("коттедж") || title.Contains("дом") || title.Contains("countryside"))
+                    detectedType = "countryside";
+                else if (title.Contains("инвест") || title.Contains("invest") || title.Contains("доход") || title.Contains("прибыль"))
+                    detectedType = "invest";
+
+                var current = typeGroups[detectedType];
+                typeGroups[detectedType] = (current.DisplayName, current.Count + 1);
+            }
+
+            // Убираем пустые категории
+            return typeGroups
+                .Where(x => x.Value.Count > 0)
+                .Select(x => (x.Key, x.Value.DisplayName, x.Value.Count))
+                .ToList();
+        }
     }
 }
