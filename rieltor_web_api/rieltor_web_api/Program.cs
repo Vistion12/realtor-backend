@@ -47,6 +47,18 @@ builder.Services.AddScoped<IPropertiesRepository, PropertiesRepository>();
 builder.Services.AddScoped<IClientsRepository, ClientsRepository>();
 builder.Services.AddScoped<IRequestsRepository, RequestsRepository>();
 
+builder.Services.AddScoped<IClientDocumentRepository, ClientDocumentRepository>();
+
+builder.Services.AddScoped<IClientAccountService>(provider =>
+{
+    var clientsRepository = provider.GetRequiredService<IClientsRepository>();
+    var userRepository = provider.GetRequiredService<IUserRepository>();
+    var telegramService = provider.GetRequiredService<ITelegramService>();
+    var logger = provider.GetRequiredService<ILogger<ClientAccountService>>();
+
+    return new ClientAccountService(clientsRepository, userRepository, telegramService, logger);
+});
+
 builder.Services.AddScoped<IPropertiesService, PropertiesService>();
 builder.Services.AddScoped<IClientsService, ClientsService>();
 builder.Services.AddScoped<IRequestsService, RequestsService>();
@@ -157,6 +169,13 @@ using (var scope = app.Services.CreateScope())
         var context = scope.ServiceProvider.GetRequiredService<PropertyStoreDBContext>();
         context.Database.Migrate();
         UserSeeder.Seed(context);
+
+        // 
+        var testPassword = "123456";
+        var passwordHash = BCrypt.Net.BCrypt.HashPassword(testPassword);
+        Console.WriteLine($" Хеш пароля '{testPassword}': {passwordHash}");
+        //  
+
     }
     catch (Exception ex)
     {

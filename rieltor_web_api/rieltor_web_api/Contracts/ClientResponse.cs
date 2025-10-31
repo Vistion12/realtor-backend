@@ -7,6 +7,11 @@
         string? Email,
         string Source,
         string? Notes,
-        DateTime CreatedAt
+        DateTime CreatedAt,
+
+        bool HasPersonalAccount,
+        string? AccountLogin,
+        bool IsAccountActive,
+        bool ConsentToPersonalData
     );
 }

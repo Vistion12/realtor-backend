@@ -13,14 +13,12 @@ namespace PropertyStore.DataAccess
         public DbSet<PropertyImageEntity> PropertyImages { get; set; }
         public DbSet<ClientEntity> Clients { get; set; }
         public DbSet<RequestEntity> Requests { get; set; }
-
         public DbSet<UserEntity> Users { get; set; }
-
         public DbSet<DealPipelineEntity> DealPipelines { get; set; }
         public DbSet<DealStageEntity> DealStages { get; set; }
         public DbSet<DealEntity> Deals { get; set; }
         public DbSet<DealHistoryEntity> DealHistory { get; set; }
-
+        public DbSet<ClientDocumentEntity> ClientDocuments { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PropertyConfiguration());
@@ -28,7 +26,7 @@ namespace PropertyStore.DataAccess
             modelBuilder.ApplyConfiguration(new ClientConfiguration());
             modelBuilder.ApplyConfiguration(new RequestConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
-
+            modelBuilder.ApplyConfiguration(new ClientDocumentConfiguration());
             modelBuilder.ApplyConfiguration(new DealPipelineConfiguration());
             modelBuilder.ApplyConfiguration(new DealStageConfiguration());
             modelBuilder.ApplyConfiguration(new DealConfiguration());

@@ -172,7 +172,11 @@ namespace rieltor_web_api.Controllers
                 client.Email,
                 client.Source,
                 client.Notes,
-                client.CreatedAt
+                client.CreatedAt,
+                client.HasPersonalAccount,
+                client.AccountLogin,
+                client.IsAccountActive,
+                client.ConsentToPersonalData
             );
         }
     }

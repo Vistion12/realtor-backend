@@ -6,6 +6,7 @@
         public const int MAX_PHONE_LENGTH = 20;
         public const int MAX_EMAIL_LENGTH = 100;
         public const int MAX_NOTES_LENGTH = 1000;
+        public const int MAX_TEMP_PASSWORD_LENGTH = 100;
 
         private Client(Guid id, string name, string phone, string? email,
                       string source, string? notes, DateTime createdAt)
@@ -26,6 +27,16 @@
         public string Source { get; } = string.Empty; // website, telegram, phone_call
         public string? Notes { get; }
         public DateTime CreatedAt { get; } = DateTime.UtcNow;
+
+        public bool HasPersonalAccount { get; private set; } = false;
+        public string? AccountLogin { get; private set; } // Email как логин
+        public string? TemporaryPassword { get; private set; }
+        public bool IsAccountActive { get; private set; } = false;
+        public bool ConsentToPersonalData { get; private set; } = false;
+        public DateTime? ConsentGivenAt { get; private set; }
+        public string? ConsentIpAddress { get; private set; }
+
+
 
         private readonly List<Request> _requests = new();
         public IReadOnlyList<Request> Requests => _requests.AsReadOnly();
@@ -50,6 +61,7 @@
 
             _requests.Add(request);
         }
+
 
         public static (Client client, string error) Create(Guid id, string name, string phone,
             string? email, string source, string? notes, DateTime createdAt)
@@ -97,6 +109,83 @@
 
             var client = new Client(id, name, phone, email, source, notes, createdAt);
             return (client, error);
+        }
+
+        public void ActivatePersonalAccount(string accountLogin, string temporaryPassword)
+        {
+            if (string.IsNullOrEmpty(accountLogin))
+                throw new ArgumentException("Account login cannot be empty");
+
+            if (string.IsNullOrEmpty(temporaryPassword))
+                throw new ArgumentException("Temporary password cannot be empty");
+
+            AccountLogin = accountLogin;
+            TemporaryPassword = temporaryPassword;
+            HasPersonalAccount = true;
+            IsAccountActive = true;
+        }
+
+        public void GiveConsent(string ipAddress)
+        {
+            if (string.IsNullOrEmpty(ipAddress))
+                throw new ArgumentException("IP address cannot be empty");
+
+            ConsentToPersonalData = true;
+            ConsentGivenAt = DateTime.UtcNow;
+            ConsentIpAddress = ipAddress;
+        }
+
+        public void ChangePassword(string newPasswordHash)
+        {
+            if (string.IsNullOrEmpty(newPasswordHash))
+                throw new ArgumentException("Password cannot be empty");
+
+            TemporaryPassword = newPasswordHash;
+            // После смены пароля временный пароль становится постоянным
+        }
+
+        public void DeactivateAccount()
+        {
+            IsAccountActive = false;
+            TemporaryPassword = null; // Очищаем пароль при деактивации
+        }
+
+        public void SetPersonalAccountFields(
+        bool hasPersonalAccount,
+        string? accountLogin,
+        string? temporaryPassword,
+        bool isAccountActive)
+        {
+            HasPersonalAccount = hasPersonalAccount;
+            AccountLogin = accountLogin;
+            TemporaryPassword = temporaryPassword;
+            IsAccountActive = isAccountActive;
+        }
+
+        public void SetConsentFields(bool consentToPersonalData, DateTime? consentGivenAt, string? consentIpAddress)
+        {
+            ConsentToPersonalData = consentToPersonalData;
+            ConsentGivenAt = consentGivenAt;
+            ConsentIpAddress = consentIpAddress;
+        }
+
+        // Или можно сделать один метод для всех полей ЛК
+        public void SetClientAccountInfo(
+            bool hasPersonalAccount = false,
+            string? accountLogin = null,
+            string? temporaryPassword = null,
+            bool isAccountActive = false,
+            bool consentToPersonalData = false,
+            DateTime? consentGivenAt = null,
+            string? consentIpAddress = null)
+        {
+            HasPersonalAccount = hasPersonalAccount;
+            AccountLogin = accountLogin;
+            TemporaryPassword = temporaryPassword;
+            IsAccountActive = isAccountActive;
+            ConsentToPersonalData = consentToPersonalData;
+            ConsentGivenAt = consentGivenAt;
+            ConsentIpAddress = consentIpAddress;
         }
     }
 }

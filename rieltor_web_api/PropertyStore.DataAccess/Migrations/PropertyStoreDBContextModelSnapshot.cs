@@ -22,11 +22,121 @@ namespace PropertyStore.DataAccess.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("PropertyStore.DataAccess.Entities.ClientDocumentEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasDefaultValue("general");
+
+                    b.Property<Guid?>("ClientEntityId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ClientId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("DealId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("FileType")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("FileUrl")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<bool>("IsRequired")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool>("IsTemplate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime?>("RequiredUntil")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("UploadedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("UploadedBy")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<Guid?>("UploadedById")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Category");
+
+                    b.HasIndex("ClientEntityId");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("DealId");
+
+                    b.HasIndex("IsRequired");
+
+                    b.HasIndex("RequiredUntil");
+
+                    b.HasIndex("UploadedAt");
+
+                    b.HasIndex("UploadedBy");
+
+                    b.ToTable("ClientDocuments");
+                });
+
             modelBuilder.Entity("PropertyStore.DataAccess.Entities.ClientEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<string>("AccountLogin")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<DateTime?>("ConsentGivenAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("ConsentIpAddress")
+                        .HasMaxLength(45)
+                        .HasColumnType("character varying(45)");
+
+                    b.Property<bool>("ConsentToPersonalData")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -34,6 +144,16 @@ namespace PropertyStore.DataAccess.Migrations
                     b.Property<string>("Email")
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
+
+                    b.Property<bool>("HasPersonalAccount")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool>("IsAccountActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -53,11 +173,21 @@ namespace PropertyStore.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("TemporaryPassword")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("AccountLogin");
 
                     b.HasIndex("CreatedAt");
 
                     b.HasIndex("Email");
+
+                    b.HasIndex("HasPersonalAccount");
+
+                    b.HasIndex("IsAccountActive");
 
                     b.HasIndex("Phone");
 
@@ -407,6 +537,28 @@ namespace PropertyStore.DataAccess.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("PropertyStore.DataAccess.Entities.ClientDocumentEntity", b =>
+                {
+                    b.HasOne("PropertyStore.DataAccess.Entities.ClientEntity", null)
+                        .WithMany("Documents")
+                        .HasForeignKey("ClientEntityId");
+
+                    b.HasOne("PropertyStore.DataAccess.Entities.ClientEntity", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PropertyStore.DataAccess.Entities.DealEntity", "Deal")
+                        .WithMany()
+                        .HasForeignKey("DealId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Deal");
+                });
+
             modelBuilder.Entity("PropertyStore.DataAccess.Entities.DealEntity", b =>
                 {
                     b.HasOne("PropertyStore.DataAccess.Entities.ClientEntity", "Client")
@@ -518,6 +670,8 @@ namespace PropertyStore.DataAccess.Migrations
             modelBuilder.Entity("PropertyStore.DataAccess.Entities.ClientEntity", b =>
                 {
                     b.Navigation("Deals");
+
+                    b.Navigation("Documents");
 
                     b.Navigation("Requests");
                 });

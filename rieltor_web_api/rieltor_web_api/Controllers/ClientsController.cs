@@ -104,6 +104,26 @@ namespace rieltor_web_api.Controllers
             }
         }
 
+        [HttpGet("{id:guid}/debug")]
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> GetClientDebugInfo(Guid id)
+        {
+            var client = await _clientsService.GetClientById(id);
+            if (client == null)
+                return NotFound();
+
+            return Ok(new
+            {
+                id = client.Id,
+                name = client.Name,
+                email = client.Email,
+                hasPersonalAccount = client.HasPersonalAccount,
+                accountLogin = client.AccountLogin,
+                temporaryPassword = client.TemporaryPassword, 
+                isAccountActive = client.IsAccountActive
+            });
+        }
+
         private ClientResponse MapToResponse(Client client)
         {
             return new ClientResponse(
@@ -113,7 +133,11 @@ namespace rieltor_web_api.Controllers
                 client.Email,
                 client.Source,
                 client.Notes,
-                client.CreatedAt
+                client.CreatedAt,
+                client.HasPersonalAccount,
+                client.AccountLogin,
+                client.IsAccountActive,
+                client.ConsentToPersonalData
             );
         }
 

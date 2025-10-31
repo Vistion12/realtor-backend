@@ -319,7 +319,12 @@ namespace rieltor_web_api.Controllers
                     deal.Client.Email,
                     deal.Client.Source,
                     deal.Client.Notes,
-                    deal.Client.CreatedAt
+                    deal.Client.CreatedAt,
+                    deal.Client.HasPersonalAccount,
+                    deal.Client.AccountLogin,
+                    deal.Client.IsAccountActive,
+                    deal.Client.ConsentToPersonalData
+
                 );
             }
 

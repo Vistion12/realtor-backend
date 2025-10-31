@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PropertyStore.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30e6b5abbd55fd102cb452874d91be55859bb1ba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dcea7c3bc0ece094e936cf163ce12a742e09f3db")]
 [assembly: System.Reflection.AssemblyProductAttribute("PropertyStore.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PropertyStore.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,6 +1,7 @@
 ﻿using AgencyStore.Core.Abstractions;
 using AgencyStore.Core.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using PropertyStore.DataAccess.Entities;
 
 namespace PropertyStore.DataAccess.Repository
@@ -8,10 +9,12 @@ namespace PropertyStore.DataAccess.Repository
     public class ClientsRepository : IClientsRepository
     {
         private readonly PropertyStoreDBContext _dbContext;
+        private readonly ILogger<ClientsRepository> _logger;
 
-        public ClientsRepository(PropertyStoreDBContext context)
+        public ClientsRepository(PropertyStoreDBContext context, ILogger<ClientsRepository> logger)
         {
             _dbContext = context;
+            _logger = logger;
         }
 
         public async Task<Guid> Create(Client client)
@@ -46,10 +49,56 @@ namespace PropertyStore.DataAccess.Repository
 
         public async Task<Guid> Delete(Guid id)
         {
-            await _dbContext.Clients
-                .Where(c => c.Id == id)
-                .ExecuteDeleteAsync();
-            return id;
+            using var transaction = await _dbContext.Database.BeginTransactionAsync();
+
+            try
+            {
+                // 1. Сначала удаляем связанные данные вручную
+                await _dbContext.Database.ExecuteSqlRawAsync(
+                    "DELETE FROM \"ClientDocuments\" WHERE \"ClientId\" = {0}", id);
+
+                await _dbContext.Database.ExecuteSqlRawAsync(
+                    "DELETE FROM \"Deals\" WHERE \"ClientId\" = {0}", id);
+
+                await _dbContext.Database.ExecuteSqlRawAsync(
+                    "DELETE FROM \"Requests\" WHERE \"ClientId\" = {0}", id);
+
+                // 2. Удаляем файлы
+                await DeleteClientFiles(id);
+
+                // 3. Теперь удаляем клиента
+                var client = await _dbContext.Clients.FindAsync(id);
+                if (client != null)
+                {
+                    _dbContext.Clients.Remove(client);
+                    await _dbContext.SaveChangesAsync();
+                }
+
+                await transaction.CommitAsync();
+                return id;
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
+
+        private async Task DeleteClientFiles(Guid clientId)
+        {
+            try
+            {
+                var clientFolder = Path.Combine(Directory.GetCurrentDirectory(), "uploads", "clients", clientId.ToString());
+                if (Directory.Exists(clientFolder))
+                {
+                    Directory.Delete(clientFolder, recursive: true);
+                    _logger.LogInformation("Файлы клиента {ClientId} удалены", clientId);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Ошибка удаления файлов клиента {ClientId}", clientId);
+            }
         }
 
         public async Task<List<Client>> Get()
@@ -107,6 +156,17 @@ namespace PropertyStore.DataAccess.Repository
             if (!string.IsNullOrEmpty(error))
                 throw new InvalidOperationException($"Invalid client data: {error}");
 
+            // УСТАНАВЛИВАЕМ ПОЛЯ ЛК!
+            client.SetClientAccountInfo(
+                hasPersonalAccount: entity.HasPersonalAccount,
+                accountLogin: entity.AccountLogin,
+                temporaryPassword: entity.TemporaryPassword,
+                isAccountActive: entity.IsAccountActive,
+                consentToPersonalData: entity.ConsentToPersonalData,
+                consentGivenAt: entity.ConsentGivenAt,
+                consentIpAddress: entity.ConsentIpAddress
+            );
+
             // Добавляем заявки клиента
             foreach (var requestEntity in entity.Requests)
             {
@@ -153,6 +213,65 @@ namespace PropertyStore.DataAccess.Repository
                 await transaction.RollbackAsync();
                 throw;
             }
+        }
+
+        public async Task<Client?> GetByEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+                return null;
+
+            var clientEntity = await _dbContext.Clients
+               .Include(c => c.Requests)
+               .AsNoTracking()
+               .FirstOrDefaultAsync(c => c.Email == email);
+
+            return clientEntity != null ? MapToDomain(clientEntity) : null;
+        }
+
+        public async Task<Client?> GetClientWithDocuments(Guid id)
+        {
+            var entity = await _dbContext.Clients
+                .Include(c => c.Documents)
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            return entity == null ? null : MapToDomain(entity);
+        }
+
+        public async Task<List<Client>> GetClientsWithPersonalAccounts()
+        {
+            var entities = await _dbContext.Clients
+                .Where(c => c.HasPersonalAccount)
+                .ToListAsync();
+
+            return entities.Select(MapToDomain).ToList();
+        }
+
+        public async Task<bool> UpdateClientAccountInfo(Client client)
+        {
+            var entity = await _dbContext.Clients.FindAsync(client.Id);
+            if (entity == null)
+                return false;
+
+            // Обновляем только поля связанные с аккаунтом
+            entity.HasPersonalAccount = client.HasPersonalAccount;
+            entity.AccountLogin = client.AccountLogin;
+            entity.TemporaryPassword = client.TemporaryPassword;
+            entity.IsAccountActive = client.IsAccountActive;
+            entity.ConsentToPersonalData = client.ConsentToPersonalData;
+            entity.ConsentGivenAt = client.ConsentGivenAt;
+            entity.ConsentIpAddress = client.ConsentIpAddress;
+
+            _dbContext.Clients.Update(entity);
+            await _dbContext.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<Client?> GetByAccountLogin(string login)
+        {
+            var entity = await _dbContext.Clients
+                .FirstOrDefaultAsync(c => c.AccountLogin == login && c.IsAccountActive);
+
+            return entity == null ? null : MapToDomain(entity);
         }
     }
 }
